@@ -8,8 +8,10 @@
     />
     <title>Terminal Portfolio Config Generator</title>
     <link rel="stylesheet" href="style.css" />
+    <style id="theme-preview-styles"></style>
   </head>
   <body>
+    <div id="copyright-badge">© PythonToGo 2026</div>
     <main class="page">
       <header class="page-header">
         <h1>Terminal Portfolio Config Generator</h1>
@@ -32,33 +34,6 @@
                 name="fullName"
                 type="text"
                 placeholder="Your Name"
-              />
-            </div>
-            <div class="field-row">
-              <label for="tagline">Tagline</label>
-              <input
-                id="tagline"
-                name="tagline"
-                type="text"
-                placeholder="Developer, writer, ... "
-              />
-            </div>
-            <div class="field-row">
-              <label for="location">Location (optional)</label>
-              <input
-                id="location"
-                name="location"
-                type="text"
-                placeholder="City, Country"
-              />
-            </div>
-            <div class="field-row">
-              <label for="authorHandle">Author handle</label>
-              <input
-                id="authorHandle"
-                name="authorHandle"
-                type="text"
-                placeholder="PythonToGo"
               />
             </div>
             <div class="field-row">
@@ -88,6 +63,15 @@
                 placeholder="PythonToGo"
               />
             </div>
+            <div class="field-row">
+              <label for="aboutText">Intro / About text (optional)</label>
+              <textarea
+                id="aboutText"
+                name="aboutText"
+                rows="4"
+                placeholder="A short paragraph about yourself. Line breaks will be split into separate lines in the terminal. If empty, it will show 'Hi there, I am {Full Name}' only."
+              ></textarea>
+            </div>
           </section>
 
           <section class="form-section">
@@ -102,7 +86,7 @@
               />
             </div>
             <div class="field-row">
-              <label for="linkedinUrl">LinkedIn URL</label>
+              <label for="linkedinUrl">LinkedIn URL (optional)</label>
               <input
                 id="linkedinUrl"
                 name="linkedinUrl"
@@ -111,13 +95,22 @@
               />
             </div>
             <div class="field-row">
-              <label for="blogUrl">Blog URL</label>
+              <label for="blogUrl">Blog URL (optional)</label>
               <input
                 id="blogUrl"
                 name="blogUrl"
                 type="url"
                 placeholder="https://your-blog.example"
               />
+            </div>
+            <div class="field-row">
+              <label for="linksOthers">Optional other links. Format Example:  Name|URL (e.g. Twitter|https://twitter.com/you)</label>
+              <textarea
+                id="linksOthers"
+                name="linksOthers"
+                rows="3"
+                placeholder="One per line. Format: Name|URL (e.g. Twitter|https://twitter.com/you)"
+              ></textarea>
             </div>
           </section>
 
@@ -129,29 +122,39 @@
                 <option value="lila">lila</option>
                 <option value="midnight">midnight</option>
                 <option value="chocolate">chocolate</option>
+                <option value="og">original</option>
+                <option value="rainbow">rainbow</option>
+                <option value="orange">orange</option>
+                <option value="olive">olive</option>
+                <option value="bluescreen">bluescreen</option>
               </select>
             </div>
           </section>
 
           <section class="form-section">
-            <h2>Content (optional)</h2>
+            <h2>Banner</h2>
             <div class="field-row">
-              <label for="aboutText">Intro / About text</label>
-              <textarea
-                id="aboutText"
-                name="aboutText"
-                rows="4"
-                placeholder="A short paragraph about yourself. Line breaks will be split into separate lines in the terminal."
-              ></textarea>
+              <label for="bannerText">Banner text</label>
+              <input
+                id="bannerText"
+                name="bannerText"
+                type="text"
+                placeholder="TAEY KIM"
+              />
             </div>
             <div class="field-row">
-              <label for="projectsIntro">Projects intro line</label>
-              <textarea
-                id="projectsIntro"
-                name="projectsIntro"
-                rows="2"
-                placeholder="A short sentence introducing your projects."
-              ></textarea>
+              <label for="bannerFont">Banner font style</label>
+              <select id="bannerFont" name="bannerFont">
+                <option value="block">block</option>
+                <option value="dotted">dotted</option>
+                <option value="light">light</option>
+                <option value="minimal">minimal</option>
+                <option value="shadow">shadow</option>
+              </select>
+            </div>
+            <div class="field-row" id="bannerPreviewRow">
+              <label>Banner preview</label>
+              <pre id="bannerPreview" class="banner-preview"></pre>
             </div>
           </section>
 
@@ -191,6 +194,7 @@
       </section>
     </main>
 
+    <script src="../js/ascii_banner.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

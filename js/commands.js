@@ -6,12 +6,20 @@ var GITHUB_USERNAME = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.github
 var EMAIL_ADDRESS = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.email) || "pythontogoplease@gmail.com";
 var email = "mailto:" + EMAIL_ADDRESS;
 
-var linkedin = (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.linkedin) || "https://www.linkedin.com/in/taeyoungkimtaey/";
+var linkedin = (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.linkedin) || "";
 var github = (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.github) || ("https://github.com/" + GITHUB_USERNAME);
-var blog = (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.blog) || "https://pythontogo.github.io/";
+var blog = (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.blog) || "";
+
+var linksOthers = {};
+if (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.others && Array.isArray(TERMINAL_CONFIG.links.others)) {
+  TERMINAL_CONFIG.links.others.forEach(function (item) {
+    var key = String(item.name).toLowerCase().replace(/\s+/g, "");
+    if (key && item.url) linksOthers[key] = { name: item.name, url: item.url };
+  });
+}
 
 // Claude-style assistant branding (owner name follows profile full name)
-var CLAUDE_ASSISTANT_NAME = "ClaudeCode";
+const CLAUDE_ASSISTANT_NAME = "ClaudeCode";
 var CLAUDE_OWNER_NAME = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Taey";
 const empty = "&nbsp";
 
@@ -25,24 +33,30 @@ var about = (function () {
     lines.push("<br>");
     return lines;
   }
+  var fullName = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Your Name";
   return [
     "<br>",
     "Hi there, 👋🏽",
-    "I am Taey Kim, a Korean Dream Explorer based in Munich, Germany",
-    'I write on my blog "PythonToGo" about programming, learning, and the way to live like a hedgehog 🦔.',
-    "This terminal template was made by PythonToGo.",
+    "I am " + fullName,
     "<br>",
   ];
 })();
 
-links = [
-  // format as table to achieve responsive column layout
-  `<table>
-   <tr><td>linkedin</td><td><a href="${linkedin}" target="_blank">${linkedin}</a></td></tr>
-   <tr><td>github</td><td><a href="${github}" target="_blank">${github}</a></td></tr>
-   <tr><td>blog</td><td><a href="${blog}" target="_blank">${blog}</a></td></tr>
-   </table>`,
-];
+links = (function () {
+  var rows = [];
+  if (linkedin) {
+    rows.push("<tr><td>linkedin</td><td><a href=\"" + linkedin + "\" target=\"_blank\">" + linkedin + "</a></td></tr>");
+  }
+  rows.push("<tr><td>github</td><td><a href=\"" + github + "\" target=\"_blank\">" + github + "</a></td></tr>");
+  if (blog) {
+    rows.push("<tr><td>blog</td><td><a href=\"" + blog + "\" target=\"_blank\">" + blog + "</a></td></tr>");
+  }
+  for (var k in linksOthers) {
+    var o = linksOthers[k];
+    rows.push("<tr><td>" + o.name + "</td><td><a href=\"" + o.url + "\" target=\"_blank\">" + o.url + "</a></td></tr>");
+  }
+  return ["<table>\n   " + rows.join("\n   ") + "\n   </table>"];
+})();
 
 projects = [
   "<br>",
@@ -76,13 +90,15 @@ help = [
   "<br>",
 ];
 
-// reload name to banner ASCII-style
-var name_ascii = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "TAEY KIM";
-banner = createAsciiBanner(name_ascii);
+// reload banner text (theme.bannerText) or fallback to profile.name
+var bannerText = (TERMINAL_CONFIG.theme && TERMINAL_CONFIG.theme.bannerText) ||
+  (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "TAEY KIM";
+var bannerFontStyle = (TERMINAL_CONFIG.theme && TERMINAL_CONFIG.theme.bannerFont) || "block";
+banner = createAsciiBanner(bannerText, bannerFontStyle);
 
 welcomeMsg = [
-  '<span class="color2 terminal-welcome-msg">Welcome to my personal terminal-like website.</span>',
-  "<span class=\"color2 terminal-welcome-msg\">Type </span> <span class=\"command terminal-welcome-msg\">'help'</span><span class=\"color2 terminal-welcome-msg\"> (and hit 'return') to see a list of available commands.</span>",
+  '<span class="color2 terminal-welcome-msg">Welcome to my personal terminal-like website!</span>',
+  "<span class=\"color2 terminal-welcome-msg\">Type </span> <span class=\"command terminal-welcome-msg\">'help'</span><span class=\"color2 terminal-welcome-msg\"> to see a list of available commands!</span>",
   "<br>",
 ];
 
@@ -92,12 +108,17 @@ allCommands = [
   "explain", "run", "edit",
   "vi", "vim", "nvim", "emacs",
   "sudo", "gui",
-];
+].concat(Object.keys(linksOthers));
 
 themes = {
   "lila": "css/style_lila.css",
   "midnight": "css/style_midnight.css",
   "chocolate": "css/style_chocolate.css",
+  "original": "css/style_og.css",
+  "rainbow": "css/style_rainbow.css",
+  "orange": "css/style_orange.css",
+  "olive": "css/style_olive.css",
+  "bluescreen": "css/style_bluescreen.css",
 };
 
 allArgs = [

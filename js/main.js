@@ -9,7 +9,7 @@ var git = 0;
 var tab = 0;
 var commandsLog = [];
 var selectedTabCmd = "";
-var current_theme = "coral";
+var current_theme = "lila";
 
 // set dynamic terminal prompt based on config/profile
 if (liner) {
@@ -119,7 +119,13 @@ function commander(cmd) {
   if (cmdAll.length > 1) {
     args = cmdAll.slice(1).join(" ");
   }
-  switch (cmd.toLowerCase()) {
+  var cmdLower = cmd.toLowerCase();
+  if (typeof linksOthers !== "undefined" && linksOthers[cmdLower]) {
+    addLine("Opening " + linksOthers[cmdLower].name + "...", "color2", 0);
+    newTab(linksOthers[cmdLower].url);
+    return;
+  }
+  switch (cmdLower) {
     // content stuff
     case "help":
       loopLines(help, "color2 margin no-animation", 20);
@@ -143,8 +149,12 @@ function commander(cmd) {
       break;
     // socials
     case "linkedin":
-      addLine("Opening LinkedIn...", "color2", 0);
-      newTab(linkedin);
+      if (linkedin) {
+        addLine("Opening LinkedIn...", "color2", 0);
+        newTab(linkedin);
+      } else {
+        addLine("LinkedIn URL is not configured.", "color2", 0);
+      }
       break;
     case "github":
       addLine("Opening GitHub...", "color2", 0);
@@ -194,6 +204,7 @@ function commander(cmd) {
             break;
           }
           addLine(`<span class=\"inherit\">Setting theme: '${themeArg}'</span>`);
+          current_theme = themeArg;
           setThemeCSS(themeArg);
           break;
         case "random":
@@ -256,21 +267,21 @@ function commander(cmd) {
       addLine("<span class=\"inherit\"></span>", "color2", 80);
       break;
     case "vi":
-      addLine("<span class=\"inherit\">why use vi? Try <span class=\"command\">'vim'</span> instead</span>", "color2", 80);
+      addLine("<span class=\"inherit\">why use vi? Try <span class=\"command\">'vim'</span> instead?</span>", "color2", 80);
       break;
     case "vim":
-      addLine("<span class=\"inherit\">why use vim? Try <span class=\"command\">'emacs'</span> instead</span>", "color2", 80);
+      addLine("<span class=\"inherit\">why use vim? Try <span class=\"command\">'emacs'</span> instead?</span>", "color2", 80);
       break;
     case "emacs":
       addLine("<span class=\"inherit\">really? emacs? You should be using <span class=\"command\">'nvim'</span></span>", "color2", 80);
       break;
     case "nvim":
-      addLine("<span class=\"inherit\">Excellent choice. But wanna try <span class=\"command\">'vim'</span> instead</span>", "color2", 80);
+      addLine("<span class=\"inherit\">really nvim? Wanna try <span class=\"command\">'vim'</span> instead?</span>", "color2", 80);
       break;
     case "sudo":
       addLine(`<span class=\"inherit\">Permission denied: unable to run '${args}' as root.</span>`, "color2", 80);
       setTimeout(function() {
-        window.open('https://youtube.com/shorts/y-B1PFvou_w?si=GW7xsWh_DajfMTw6');
+        window.open('https://www.youtube.com/@zum.hier.trinken/shorts');
       }, 1); 
       break;
     case "":
@@ -363,3 +374,12 @@ function removeTabCompleteLine() {
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+// Apply default theme from config on load
+(function() {
+  var defaultTheme = (typeof TERMINAL_CONFIG !== "undefined" && TERMINAL_CONFIG.theme && TERMINAL_CONFIG.theme.defaultTheme) || null;
+  if (defaultTheme && typeof themes !== "undefined" && themes[defaultTheme]) {
+    setThemeCSS(defaultTheme);
+    current_theme = defaultTheme;
+  }
+})();

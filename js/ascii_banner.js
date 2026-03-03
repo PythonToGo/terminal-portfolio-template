@@ -1,3 +1,18 @@
+/**
+ * ASCII banner fonts - multiple styles supported.
+ * block: solid blocks (█)
+ * dotted: dotted style (·)
+ * light: light shade (░)
+ * minimal: hash style (#)
+ * shadow: block with bottom shadow (█ + ░)
+ */
+const FONT_STYLES = {
+  block: { fill: "█", shadow: false },
+  dotted: { fill: "·", shadow: false },
+  light: { fill: "░", shadow: false },
+  minimal: { fill: "#", shadow: false },
+  shadow: { fill: "█", shadow: true },
+};
 
 const asciiFont = {
   A: [
@@ -245,43 +260,262 @@ const asciiFont = {
   ],
 };
 
-// map lowercase letters to the same glyphs
-asciiFont.a = asciiFont.A;
-asciiFont.b = asciiFont.B;
-asciiFont.c = asciiFont.C;
-asciiFont.d = asciiFont.D;
-asciiFont.e = asciiFont.E;
-asciiFont.f = asciiFont.F;
-asciiFont.g = asciiFont.G;
-asciiFont.h = asciiFont.H;
-asciiFont.i = asciiFont.I;
-asciiFont.j = asciiFont.J;
-asciiFont.k = asciiFont.K;
-asciiFont.l = asciiFont.L;
-asciiFont.m = asciiFont.M;
-asciiFont.n = asciiFont.N;
-asciiFont.o = asciiFont.O;
-asciiFont.p = asciiFont.P;
-asciiFont.q = asciiFont.Q;
-asciiFont.r = asciiFont.R;
-asciiFont.s = asciiFont.S;
-asciiFont.t = asciiFont.T;
-asciiFont.u = asciiFont.U;
-asciiFont.v = asciiFont.V;
-asciiFont.w = asciiFont.W;
-asciiFont.x = asciiFont.X;
-asciiFont.y = asciiFont.Y;
-asciiFont.z = asciiFont.Z;
+// lowercase glyphs
+asciiFont.a = [
+  "        ",
+  "  ████  ",
+  "█    ██ ",
+  "  ██ ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  "  █████ ",
+];
 
-function textToAsciiLines(text) {
-  const upper = String(text || "").toUpperCase();
+asciiFont.b = [
+  " ██     ",
+  " ██     ",
+  " █████  ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " █████  ",
+];
+asciiFont.c = [
+  "        ",
+  "  █████ ",
+  " ██   ██",
+  " ██     ",
+  " ██     ",
+  " ██   ██",
+  "  █████ ",
+];
+asciiFont.d = [
+  "     ██ ",
+  "     ██ ",
+  "  █████ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  "  █████ ",
+];
+asciiFont.e = [
+  "        ",
+  "  █████ ",
+  " ██   ██",
+  " ██████ ",
+  " ██     ",
+  " ██   ██",
+  "  █████ ",
+];
+asciiFont.f = [
+  "   ███  ",
+  "  ██    ",
+  " █████  ",
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+];
+asciiFont.g = [
+  "        ",
+  "  █████ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  "  █████ ",
+  "     ██ ",
+  "  ████  ",
+];
+asciiFont.h = [
+  " ██     ",
+  " ██     ",
+  " █████  ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+];
+asciiFont.i = [
+  "   ██   ",
+  "        ",
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+  " ████   ",
+];
+asciiFont.j = [
+  "     ██ ",
+  "        ",
+  "    ██  ",
+  "    ██  ",
+  "    ██  ",
+  " ██ ██  ",
+  "  ███   ",
+];
+asciiFont.k = [
+  " ██     ",
+  " ██  ██ ",
+  " ██ ██  ",
+  " ████   ",
+  " ██ ██  ",
+  " ██  ██ ",
+  " ██  ██ ",
+];
+asciiFont.l = [
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+  " ████   ",
+];
+asciiFont.m = [
+  "        ",
+  " ██   ██",
+  " ███ ███",
+  " ██ █ ██",
+  " ██   ██",
+  " ██   ██",
+  " ██   ██",
+];
+asciiFont.n = [
+  "        ",
+  " █████  ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+];
+asciiFont.o = [
+  "        ",
+  "  ████  ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  "  ████  ",
+];
+asciiFont.p = [
+  "        ",
+  " █████  ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " █████  ",
+  " ██     ",
+  " ██     ",
+];
+asciiFont.q = [
+  "        ",
+  "  █████ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██ ███ ",
+  "  █████ ",
+  "     ██ ",
+];
+asciiFont.r = [
+  "        ",
+  " ██ ███ ",
+  " ██ ██  ",
+  " ███    ",
+  " ██     ",
+  " ██     ",
+  " ██     ",
+];
+asciiFont.s = [
+  "        ",
+  "  █████ ",
+  " ██     ",
+  "  ████  ",
+  "     ██ ",
+  " ██   ██",
+  "  █████ ",
+];
+asciiFont.t = [
+  "  ██    ",
+  " ██████ ",
+  "  ██    ",
+  "  ██    ",
+  "  ██    ",
+  "  ██  █ ",
+  "   ███  ",
+];
+asciiFont.u = [
+  "        ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  "  ████  ",
+];
+asciiFont.v = [
+  "        ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  " ██  ██ ",
+  "  ████  ",
+  "   ██   ",
+];
+asciiFont.w = [
+  "        ",
+  " ██   ██",
+  " ██   ██",
+  " ██ █ ██",
+  " ██ █ ██",
+  " ███ ███",
+  "  █   █ ",
+];
+asciiFont.x = [
+  "        ",
+  " ██  ██ ",
+  " ██  ██ ",
+  "  ████  ",
+  "  ████  ",
+  " ██  ██ ",
+  " ██  ██ ",
+];
+asciiFont.y = [
+  "        ",
+  " ██  ██ ",
+  " ██  ██ ",
+  "  ████  ",
+  "   ██   ",
+  "█  ██  ",
+  " ███    ",
+];
+asciiFont.z = [
+  "        ",
+  " ██████ ",
+  "     ██ ",
+  "    ██  ",
+  "   ██   ",
+  "  ██    ",
+  " ██████ ",
+];
+
+function applyFontStyle(glyphLines, styleName) {
+  const style = FONT_STYLES[styleName] || FONT_STYLES.block;
+  const fill = style.fill;
+  return glyphLines.map(function (line) {
+    return line.replace(/█/g, fill);
+  });
+}
+
+function textToAsciiLines(text, fontStyle) {
+  fontStyle = fontStyle || "block";
+  const str = String(text || "");
   const lines = ["", "", "", "", "", "", ""];
 
-  for (let i = 0; i < upper.length; i++) {
-    const ch = upper[i];
+  for (let i = 0; i < str.length; i++) {
+    const ch = str[i];
     const glyph = asciiFont[ch] || asciiFont[" "];
+    const styled = applyFontStyle(glyph, fontStyle);
     for (let row = 0; row < 7; row++) {
-      lines[row] += glyph[row] + "  ";
+      lines[row] += styled[row] + "  ";
     }
   }
 
@@ -289,10 +523,18 @@ function textToAsciiLines(text) {
 }
 
 // helper to build banner array from a text using ASCII arrays.
-function createAsciiBanner(text) {
+function createAsciiBanner(text, fontStyle) {
+  fontStyle = fontStyle || "block";
+  var lines = textToAsciiLines(text, fontStyle);
+
+  if (FONT_STYLES[fontStyle] && FONT_STYLES[fontStyle].shadow) {
+    var lastRow = lines[6].replace(/█/g, "░");
+    lines.push(" " + lastRow);
+  }
+
   return [
     "<br>",
-    ...textToAsciiLines(text),
+    ...lines,
     "<br>",
   ];
 }
