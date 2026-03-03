@@ -8,7 +8,15 @@
 
 몇 가지 설정 값을 직접 수정하거나, 내장된 **config generator**를 사용해 자신만의 페이지를 만들 수 있습니다.
 
-<img width="1036" height="850" alt="image" src="https://github.com/user-attachments/assets/9d5c85f8-6b2d-438e-ac22-3578dbbbefc2" />
+<!-- <img width="1036" height="850" alt="image" src="https://github.com/user-attachments/assets/9d5c85f8-6b2d-438e-ac22-3578dbbbefc2" /> -->
+
+## 데모
+
+![demo_terminal_like_portfolio-ezgif com-crop](https://github.com/user-attachments/assets/b1a77e2b-0ec1-40d4-b592-3a73081e96f0)
+
+### 설정 생성 및 웹사이트 제작 방법
+
+![how_to_use-ezgif com-crop](https://github.com/user-attachments/assets/3f040e0c-4f50-4e9a-8954-d46b2a6e4804)
 
 제작: [**PythonToGo**](https://github.com/PythonToGo).
 

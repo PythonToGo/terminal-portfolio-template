@@ -8,7 +8,15 @@ Dies ist eine kleine **Terminal-artige persönliche Homepage**. Sie besteht aus 
 
 Sie können dieses Repository als **Vorlage** für Ihre eigene Seite verwenden, indem Sie entweder einige Konfigurationswerte bearbeiten oder den eingebauten **Config Generator** nutzen.
 
-<img width="1036" height="850" alt="image" src="https://github.com/user-attachments/assets/9d5c85f8-6b2d-438e-ac22-3578dbbbefc2" />
+<!-- <img width="1036" height="850" alt="image" src="https://github.com/user-attachments/assets/9d5c85f8-6b2d-438e-ac22-3578dbbbefc2" /> -->
+
+## Demo
+
+![demo_terminal_like_portfolio-ezgif com-crop](https://github.com/user-attachments/assets/b1a77e2b-0ec1-40d4-b592-3a73081e96f0)
+
+### So generieren Sie die Config und erstellen Ihre eigene Website
+
+![how_to_use-ezgif com-crop](https://github.com/user-attachments/assets/3f040e0c-4f50-4e9a-8954-d46b2a6e4804)
 
 Erstellt von [**PythonToGo**](https://github.com/PythonToGo).
 
