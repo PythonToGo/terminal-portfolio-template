@@ -66,12 +66,13 @@ projects = [
   `<div id="repo-box"></div>`,
 ];
 
+var profileFullName = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Your Name";
 help = [
   "<br>",
   'Use these commands to navigate my web-terminal:',
   // format as table to achieve responsive column layout
   `<table>
-  <tr><td><span class="command">about</span></td><td>Who is Taey?</td></tr>
+  <tr><td><span class="command">about</span></td><td>Who is ${profileFullName}?</td></tr>
   <tr><td><span class="command">links</span></td><td>Display my links</td></tr>
   <tr><td><span class="command">projects</span></td><td>View coding projects</td></tr>
   <tr><td><span class="command">explain</span></td><td>ClaudeCode explains a topic</td></tr>
