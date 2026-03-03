@@ -1,24 +1,46 @@
 
-var linkedin = "https://www.linkedin.com/in/taeyoungkimtaey/";
-var github = "https://github.com/PythonToGo";
-var email = "mailto:pythontogoplease@gmail.com";
-var blog = "https://pythontogo.github.io/";
+var TERMINAL_CONFIG = (typeof window !== "undefined" && window.TERMINAL_CONFIG) ? window.TERMINAL_CONFIG : {};
+
+// basic profile & contact configuration with safe fallbacks
+var GITHUB_USERNAME = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.githubUsername) || "PythonToGo";
+var EMAIL_ADDRESS = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.email) || "pythontogoplease@gmail.com";
+var email = "mailto:" + EMAIL_ADDRESS;
+
+var linkedin = (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.linkedin) || "https://www.linkedin.com/in/taeyoungkimtaey/";
+var github = (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.github) || ("https://github.com/" + GITHUB_USERNAME);
+var blog = (TERMINAL_CONFIG.links && TERMINAL_CONFIG.links.blog) || "https://pythontogo.github.io/";
+
+// Claude-style assistant branding (owner name follows profile full name)
+var CLAUDE_ASSISTANT_NAME = "ClaudeCode";
+var CLAUDE_OWNER_NAME = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Taey";
 const empty = "&nbsp";
 
-about = [
-  "<br>",
-  "Hi there, 👋🏽",
-  `I am Taey Kim, a Korean Dream Explorer based in Munich, Germany`,
-  `I write on my blog "PythonToGo" about programming, learning, and the way to live like a hedgehog 🦔.`,
-  "<br>",
-];
+var about = (function () {
+  if (TERMINAL_CONFIG.content && Array.isArray(TERMINAL_CONFIG.content.aboutLines) && TERMINAL_CONFIG.content.aboutLines.length > 0) {
+    var lines = ["<br>"];
+    for (var i = 0; i < TERMINAL_CONFIG.content.aboutLines.length; i++) {
+      lines.push(TERMINAL_CONFIG.content.aboutLines[i]);
+    }
+    lines.push("This terminal template was made by PythonToGo.");
+    lines.push("<br>");
+    return lines;
+  }
+  return [
+    "<br>",
+    "Hi there, 👋🏽",
+    "I am Taey Kim, a Korean Dream Explorer based in Munich, Germany",
+    'I write on my blog "PythonToGo" about programming, learning, and the way to live like a hedgehog 🦔.',
+    "This terminal template was made by PythonToGo.",
+    "<br>",
+  ];
+})();
 
 links = [
   // format as table to achieve responsive column layout
   `<table>
-   <tr><td>linkedin</td><td><a href="${linkedin}" target="_blank">linkedin/taeyoungkimtaey</a></td></tr>
-   <tr><td>github</td><td><a href="${github}" target="_blank">github/PythonToGo</a></td></tr>
-   <tr><td>blog</td><td><a href="${blog}" target="_blank">pythontogo.github.io/</a></td></tr>
+   <tr><td>linkedin</td><td><a href="${linkedin}" target="_blank">${linkedin}</a></td></tr>
+   <tr><td>github</td><td><a href="${github}" target="_blank">${github}</a></td></tr>
+   <tr><td>blog</td><td><a href="${blog}" target="_blank">${blog}</a></td></tr>
    </table>`,
 ];
 
@@ -55,12 +77,11 @@ help = [
 ];
 
 // reload name to banner ASCII-style
-const name_ascii = "TAEY KIM";
-
+var name_ascii = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "TAEY KIM";
 banner = createAsciiBanner(name_ascii);
 
 welcomeMsg = [
-  '<span class="color2 terminal-welcome-msg">Welcome to my personal website.</span>',
+  '<span class="color2 terminal-welcome-msg">Welcome to my personal terminal-like website.</span>',
   "<span class=\"color2 terminal-welcome-msg\">Type </span> <span class=\"command terminal-welcome-msg\">'help'</span><span class=\"color2 terminal-welcome-msg\"> (and hit 'return') to see a list of available commands.</span>",
   "<br>",
 ];

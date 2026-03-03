@@ -1,0 +1,180 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #111827;
+  background: #0f172a;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+  color: #e5e7eb;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.8rem;
+}
+
+.page-header p {
+  margin: 0;
+  max-width: 640px;
+  color: #d1d5db;
+}
+
+.card {
+  background: #020617;
+  border-radius: 12px;
+  padding: 20px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.25rem;
+  color: #e5e7eb;
+}
+
+.card p,
+.card li {
+  color: #cbd5f5;
+}
+
+.form-section {
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+.form-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.form-section h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.field-row label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: #9ca3af;
+}
+
+.field-row input,
+.field-row textarea,
+.field-row select {
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.field-row input::placeholder,
+.field-row textarea::placeholder {
+  color: #6b7280;
+}
+
+.field-row textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.actions button {
+  cursor: pointer;
+  border-radius: 999px;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+#generateBtn {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: white;
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+}
+
+#generateBtn:hover {
+  box-shadow: 0 12px 26px rgba(59, 130, 246, 0.5);
+  transform: translateY(-1px);
+}
+
+#downloadBtn {
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+#downloadBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.output {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+ol {
+  padding-left: 20px;
+}
+
+code {
+  background: rgba(15, 23, 42, 0.8);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+@media (min-width: 768px) {
+  .field-row-inline {
+    display: flex;
+    gap: 10px;
+  }
+}
+

@@ -1,0 +1,25 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Python / virtualenv (if used locally)
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Node (in case you add tooling later)
+node_modules/
+dist/
+build/
+
+# Cursor / editor metadata
+.cursor/
+
+# Local config / secrets (none are required by this project)
+.env
+.env.*
+

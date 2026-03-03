@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Terminal Portfolio Config Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <h1>Terminal Portfolio Config Generator</h1>
+        <p>
+          Fill in your personal details and click
+          <strong>Generate config</strong> to get a
+          <code>terminal-config.js</code> file for your own terminal-style
+          homepage.
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="config-form">
+          <section class="form-section">
+            <h2>Profile</h2>
+            <div class="field-row">
+              <label for="fullName">Full name</label>
+              <input
+                id="fullName"
+                name="fullName"
+                type="text"
+                placeholder="Your Name"
+              />
+            </div>
+            <div class="field-row">
+              <label for="tagline">Tagline</label>
+              <input
+                id="tagline"
+                name="tagline"
+                type="text"
+                placeholder="Developer, writer, ... "
+              />
+            </div>
+            <div class="field-row">
+              <label for="location">Location (optional)</label>
+              <input
+                id="location"
+                name="location"
+                type="text"
+                placeholder="City, Country"
+              />
+            </div>
+            <div class="field-row">
+              <label for="authorHandle">Author handle</label>
+              <input
+                id="authorHandle"
+                name="authorHandle"
+                type="text"
+                placeholder="PythonToGo"
+              />
+            </div>
+            <div class="field-row">
+              <label for="email">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div class="field-row">
+              <label for="githubUsername">GitHub username</label>
+              <input
+                id="githubUsername"
+                name="githubUsername"
+                type="text"
+                placeholder="your-github-id"
+              />
+            </div>
+            <div class="field-row">
+              <label for="blogTitle">Blog title</label>
+              <input
+                id="blogTitle"
+                name="blogTitle"
+                type="text"
+                placeholder="PythonToGo"
+              />
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Links</h2>
+            <div class="field-row">
+              <label for="githubUrl">GitHub URL</label>
+              <input
+                id="githubUrl"
+                name="githubUrl"
+                type="url"
+                placeholder="https://github.com/your-github-id"
+              />
+            </div>
+            <div class="field-row">
+              <label for="linkedinUrl">LinkedIn URL</label>
+              <input
+                id="linkedinUrl"
+                name="linkedinUrl"
+                type="url"
+                placeholder="https://www.linkedin.com/in/you/"
+              />
+            </div>
+            <div class="field-row">
+              <label for="blogUrl">Blog URL</label>
+              <input
+                id="blogUrl"
+                name="blogUrl"
+                type="url"
+                placeholder="https://your-blog.example"
+              />
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Theme</h2>
+            <div class="field-row">
+              <label for="defaultTheme">Default theme</label>
+              <select id="defaultTheme" name="defaultTheme">
+                <option value="lila">lila</option>
+                <option value="midnight">midnight</option>
+                <option value="chocolate">chocolate</option>
+              </select>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Content (optional)</h2>
+            <div class="field-row">
+              <label for="aboutText">Intro / About text</label>
+              <textarea
+                id="aboutText"
+                name="aboutText"
+                rows="4"
+                placeholder="A short paragraph about yourself. Line breaks will be split into separate lines in the terminal."
+              ></textarea>
+            </div>
+            <div class="field-row">
+              <label for="projectsIntro">Projects intro line</label>
+              <textarea
+                id="projectsIntro"
+                name="projectsIntro"
+                rows="2"
+                placeholder="A short sentence introducing your projects."
+              ></textarea>
+            </div>
+          </section>
+
+          <div class="actions">
+            <button type="submit" id="generateBtn">Generate config</button>
+            <button type="button" id="downloadBtn" disabled>
+              Download terminal-config.js
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Generated config</h2>
+        <p>
+          Copy this into a file named <code>terminal-config.js</code> at the
+          root of your terminal template, or use the download button above.
+        </p>
+        <textarea
+          id="output"
+          class="output"
+          rows="18"
+          readonly
+          placeholder="// Your generated config will appear here after you click “Generate config”."
+        ></textarea>
+      </section>
+
+      <section class="card">
+        <h2>How to use</h2>
+        <ol>
+          <li>Clone or use the terminal template repository as a template.</li>
+          <li>Open this generator page in a browser.</li>
+          <li>Fill in your information and click <strong>Generate config</strong>.</li>
+          <li>Save the result as <code>terminal-config.js</code> in the template root.</li>
+          <li>Open <code>index.html</code> of the template in a browser and enjoy your terminal homepage.</li>
+        </ol>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
+

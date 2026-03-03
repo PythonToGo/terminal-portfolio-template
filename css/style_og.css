@@ -61,7 +61,7 @@ body {
   }
   #liner::before {
     color: #519975;
-    content: "guest@taey-term:$ ~";
+    content: attr(data-terminal-prompt);
   }
   #liner.password::before {
     content: "Password:";
@@ -128,4 +128,34 @@ body {
   }
   a:focus {
     outline: 0;
+  }
+
+  /* Banner image layout */
+  .terminal-banner .banner-images {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .terminal-banner .banner-char {
+    height: 56px;
+    image-rendering: pixelated;
+  }
+  .terminal-banner .banner-space {
+    display: inline-block;
+    width: 20px;
+  }
+  .terminal-banner .banner-char-fallback {
+    display: inline-block;
+    padding: 0 4px;
+  }
+
+  /* Copyright badge */
+  #copyright-badge {
+    position: fixed;
+    top: 8px;
+    right: 14px;
+    font-size: 11px;
+    color: #9C8394;
+    opacity: 0.8;
+    pointer-events: none;
   }

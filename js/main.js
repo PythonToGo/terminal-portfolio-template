@@ -11,6 +11,17 @@ var commandsLog = [];
 var selectedTabCmd = "";
 var current_theme = "coral";
 
+// set dynamic terminal prompt based on config/profile
+if (liner) {
+  var promptOwner =
+    (typeof TERMINAL_CONFIG !== "undefined" &&
+      TERMINAL_CONFIG.profile &&
+      TERMINAL_CONFIG.profile.name) ||
+    "taey";
+  var normalized = String(promptOwner).split(" ")[0].toLowerCase();
+  liner.setAttribute("data-terminal-prompt", "guest@" + normalized + "-term:$ ~");
+}
+
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 setTimeout(async function() {
@@ -121,13 +132,13 @@ function commander(cmd) {
       break;
     case "projects":
       loopLines(projects, "color2 margin no-animation", 0);
-      // GitHub API에서 비동기로 레포 목록을 가져와 repo-box 안에 렌더링
+      // fetch repos asynchronously
       setTimeout(function() {
-        loadReposIntoBox("PythonToGo", 4, "repo-box");
+        loadReposIntoBox(GITHUB_USERNAME, 4, "repo-box");
       }, 200);
       break;
     case "email":
-      addLine('Opening mailto:<a href="mailto:pythontogoplease@gmail.com">pythontogoplease@gmail.com</a>...', "color2", 80);
+      addLine(`Opening mailto:<a href="mailto:${EMAIL_ADDRESS}">${EMAIL_ADDRESS}</a>...`, "color2", 80);
       newTab(email);
       break;
     // socials
@@ -210,23 +221,23 @@ function commander(cmd) {
       break;
     case "explain":
       if (args) {
-        addLine(`<span class=\"inherit\">[ClaudeCode] I tried to explain <span class=\"command\">${args}</span>, but Taey is asking for more context. Paste a snippet and I’ll try again.</span>`, "color2", 80);
+        addLine(`<span class=\"inherit\">[${CLAUDE_ASSISTANT_NAME}] I tried to explain <span class=\"command\">${args}</span>, but ${CLAUDE_OWNER_NAME} is asking for more context. Paste a snippet and I’ll try again.</span>`, "color2", 80);
       } else {
-        addLine("<span class=\"inherit\">Usage: <span class=\"command\">explain &lt;topic&gt;</span> — like asking Claude to explain code.</span>", "color2", 80);
+        addLine(`<span class=\"inherit\">Usage: <span class=\"command\">explain &lt;topic&gt;</span> — like asking ${CLAUDE_ASSISTANT_NAME} to explain code.</span>`, "color2", 80);
       }
       break;
     case "run":
       if (args) {
-        addLine(`<span class=\"inherit\">[ClaudeCode] I tried to run <span class=\"command\">${args}</span>, but Taey is blocking execution!</span>`, "color2", 80);
+        addLine(`<span class=\"inherit\">[${CLAUDE_ASSISTANT_NAME}] I tried to run <span class=\"command\">${args}</span>, but ${CLAUDE_OWNER_NAME} is blocking execution!</span>`, "color2", 80);
       } else {
-        addLine("<span class=\"inherit\">Usage: <span class=\"command\">run &lt;command&gt;</span> — simulates running a shell command in ClaudeCode.</span>", "color2", 80);
+        addLine(`<span class=\"inherit\">Usage: <span class=\"command\">run &lt;command&gt;</span> — simulates running a shell command in ${CLAUDE_ASSISTANT_NAME}.</span>`, "color2", 80);
       }
       break;
     case "edit":
       if (args) {
-        addLine(`<span class=\"inherit\">[ClaudeCode] I tried to edit <span class=\"command\">${args}</span>, but a change request PR was filed to Taey instead.</span>`, "color2", 80);
+        addLine(`<span class=\"inherit\">[${CLAUDE_ASSISTANT_NAME}] I tried to edit <span class=\"command\">${args}</span>, but a change request PR was filed to ${CLAUDE_OWNER_NAME} instead.</span>`, "color2", 80);
       } else {
-        addLine("<span class=\"inherit\">Usage: <span class=\"command\">edit &lt;file-or-thing&gt;</span> — like asking Claude to refactor something.</span>", "color2", 80);
+        addLine(`<span class=\"inherit\">Usage: <span class=\"command\">edit &lt;file-or-thing&gt;</span> — like asking ${CLAUDE_ASSISTANT_NAME} to refactor something.</span>`, "color2", 80);
       }
       break;
     // fun commands
