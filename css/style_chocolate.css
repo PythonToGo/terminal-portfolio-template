@@ -74,7 +74,7 @@ html {
   #liner::before {
     color: #A09BE7;
     font-size: min(20px, calc(1.5vw + 7px));
-    content: "guest@pw-term:$ ~";
+    content: "guest@taey-term:$ ~";
   }
   /* #liner.password::before {
     content: "Password:";

@@ -7,8 +7,6 @@ var after = document.getElementById("after");
 
 var git = 0;
 var tab = 0;
-var pw = false;
-let pwd = false;
 var commandsLog = [];
 var selectedTabCmd = "";
 var current_theme = "coral";
@@ -123,6 +121,10 @@ function commander(cmd) {
       break;
     case "projects":
       loopLines(projects, "color2 margin no-animation", 0);
+      // GitHub API에서 비동기로 레포 목록을 가져와 repo-box 안에 렌더링
+      setTimeout(function() {
+        loadReposIntoBox("PythonToGo", 4, "repo-box");
+      }, 200);
       break;
     case "email":
       addLine('Opening mailto:<a href="mailto:pythontogoplease@gmail.com">pythontogoplease@gmail.com</a>...', "color2", 80);

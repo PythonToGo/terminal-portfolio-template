@@ -1,36 +1,59 @@
-function getReposList(user) {
-    // sort by most recently pushed (updated) repos
-    apirepo = `https://api.github.com/users/${user}/repos?sort=updated&direction=desc`;
-    html_table = `<table>`;
+async function loadReposIntoBox(user, limit, elementId) {
+    // show top 4 repos
+    if (typeof limit === "undefined") {
+        limit = 4;
+    }
+    if (!elementId) {
+        elementId = "repo-box";
+    }
 
-    //  $.getJSON is async and does not work here
-    $.ajax({
-        url: apirepo,
-        dataType: 'json',
-        async: false,
-        success: function(json) {
-            // ensure newest first even if API changes default order
-            json.sort(function(a, b) {
-                return new Date(b.pushed_at) - new Date(a.pushed_at);
-            });
+    const box = document.getElementById(elementId);
+    if (!box) {
+        return;
+    }
 
-            json.forEach(repo => {
-                if (repo.description == null) {
-                    return;        // this is equivalent of 'continue' for jQuery loop
-                }
+    box.innerHTML = "Loading GitHub repos...";
 
-                html_table += `<tr><td><a href="${repo.html_url}" target="_blank">${repo.name}</a></td>`;
-
-                descr_txt = repo.description;
-                if (repo.stargazers_count > 0) {
-                    descr_txt += ` (${repo.stargazers_count}⭐️ on <a href="${repo.html_url}" target="_blank">GitHub</a>)`;
-                }
-
-                html_table += `<td>${descr_txt}</td></tr>`;
-            })
+    try {
+        const resp = await fetch(`https://api.github.com/users/${user}/repos?sort=updated&direction=desc`);
+        if (!resp.ok) {
+            throw new Error("GitHub API returned " + resp.status);
         }
-    })
-    return html_table + `</table>`;
-}
+        const json = await resp.json();
 
-const repos = getReposList("PythonToGo").slice(0, 4);
+        json.sort(function(a, b) {
+            return new Date(b.pushed_at) - new Date(a.pushed_at);
+        });
+
+        const rows = [];
+        let count = 0;
+        json.forEach(repo => {
+            if (count >= limit) {
+                return;
+            }
+
+            let descr_txt = repo.description;
+            if (!descr_txt || descr_txt.trim() === "") {
+                descr_txt = "(no description yet)";
+            }
+
+            let row = `<tr><td><a href="${repo.html_url}" target="_blank">${repo.name}</a></td>`;
+            if (repo.stargazers_count > 0) {
+                descr_txt += ` (${repo.stargazers_count}⭐️ on <a href="${repo.html_url}" target="_blank">GitHub</a>)`;
+            }
+            row += `<td>${descr_txt}</td></tr>`;
+            rows.push(row);
+            count += 1;
+        });
+
+        if (rows.length === 0) {
+            box.innerHTML = "No public repositories to display.";
+            return;
+        }
+
+        box.innerHTML = `<table>${rows.join("")}</table>`;
+    } catch (e) {
+        console.error("Failed to load GitHub repos:", e);
+        box.innerHTML = "Failed to load GitHub repositories.";
+    }
+}

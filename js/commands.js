@@ -28,7 +28,6 @@ projects = [
   "Here is a list of some GitHub repos that I worked on:",
   "<br>",
   `<div id="repo-box"></div>`,
-  repos,
 ];
 
 help = [
@@ -39,9 +38,9 @@ help = [
   <tr><td><span class="command">about</span></td><td>Who is Taey?</td></tr>
   <tr><td><span class="command">links</span></td><td>Display my links</td></tr>
   <tr><td><span class="command">projects</span></td><td>View coding projects</td></tr>
-  <tr><td><span class="command">explain</span></td><td>Claude-style explain of a topic</td></tr>
-  <tr><td><span class="command">run</span></td><td>Fake-run a command (ClaudeCode vibes)</td></tr>
-  <tr><td><span class="command">edit</span></td><td>Pretend to edit a file with AI</td></tr>
+  <tr><td><span class="command">explain</span></td><td>ClaudeCode explains a topic</td></tr>
+  <tr><td><span class="command">run</span></td><td>ClaudeCode runs a command</td></tr>
+  <tr><td><span class="command">edit</span></td><td>ClaudeCode edits a file</td></tr>
   <tr><td><span class="command">history</span></td><td>View command history</td></tr>
   <tr><td><span class="command">help</span></td><td>You obviously already know what this does</td></tr>
   <tr><td><span class="command">email</span></td><td>Do not email me</td></tr>
