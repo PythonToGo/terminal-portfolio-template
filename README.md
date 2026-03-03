@@ -4,6 +4,10 @@ This is a small **terminal-style personal homepage**. It is built as a simple st
 
 You can use this repository as a **template** for your own page by either editing a few config values, or by using the built–in **config generator**.
 
+<img width="1036" height="850" alt="image" src="https://github.com/user-attachments/assets/9d5c85f8-6b2d-438e-ac22-3578dbbbefc2" />
+
+
+
 Made by **PythonToGo**.
 
 ## Quick start
@@ -12,7 +16,7 @@ Made by **PythonToGo**.
 2. Open `index.html` in a browser to see the terminal.
 3. Customize it in one of two ways:
    - **Option A – edit `js/commands.js` directly** OR
-   - **Option B – use the generator to create `terminal-config.js`** (quick setup).
+   - **Option B – use the generator to create `terminal-config.js`** (quick setup: [**Go To Config Generator**](https://pythontogo.github.io/terminal-portfolio-template/generator/) ).
 
 ## Option A – manual configuration
 
@@ -36,7 +40,8 @@ This repository also provides a **small generator page** that creates a ready‑
 
 ### 1. Open the generator
 
-Open `generator/index.html` in your browser (you can just open the file from your file system).
+Open `generator/index.html` or visit the hosted generator at [`https://pythontogo.github.io/terminal-portfolio-template/generator/`](https://pythontogo.github.io/terminal-portfolio-template/generator/) in your browser (you can also just open the file from your file system).
+
 
 You will see a form with these sections:
 
