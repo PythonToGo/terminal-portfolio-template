@@ -1,14 +1,43 @@
 # Terminal Portfolio Template
 
+**Read in:** [English](README.md) | [한국어](README.ko.md) | [Deutsch](README.de.md) | [中文](README.zh-CN.md) | [Türkçe](README.tr.md)
+
+---
+
 This is a small **terminal-style personal homepage**. It is built as a simple static site: just HTML, CSS and JavaScript.
 
-You can use this repository as a **template** for your own page by either editing a few config values, or by using the built–in **config generator**.
+You can use this repository as a **template** for your own page by either editing a few config values, or by using the built-in **config generator**.
 
 <img width="1036" height="850" alt="image" src="https://github.com/user-attachments/assets/9d5c85f8-6b2d-438e-ac22-3578dbbbefc2" />
 
+Made by [**PythonToGo**](https://github.com/PythonToGo).
 
+## Project structure
 
-Made by **PythonToGo**.
+```
+.
+├── index.html              # Main terminal page
+├── terminal-config.js      # User config (generated, optional)
+├── js/
+│   ├── main.js             # Command handling, UI logic
+│   ├── commands.js         # Config values, content arrays, commands list
+│   ├── ascii_banner.js     # ASCII banner fonts and rendering
+│   ├── github.js           # GitHub API – fetches repos for projects
+│   └── caret.js            # Typing simulation, cursor
+├── css/
+│   ├── style_lila.css      # Default theme
+│   ├── style_midnight.css
+│   ├── style_chocolate.css
+│   ├── style_og.css         # original
+│   ├── style_rainbow.css
+│   ├── style_orange.css
+│   ├── style_olive.css
+│   └── style_bluescreen.css
+└── generator/
+    ├── index.html          # Config generator form
+    ├── main.js             # Form logic, config building
+    └── style.css           # Generator styles
+```
 
 ## Quick start
 
@@ -20,106 +49,114 @@ Made by **PythonToGo**.
 
 ## Option A – manual configuration
 
-Open `js/commands.js` and look at the top of the file.
+Open `js/commands.js` and edit the values at the top:
 
-There you will find configuration values such as:
-
-- `GITHUB_USERNAME`
-- `EMAIL_ADDRESS`
-- the default `linkedin`, `github` and `blog` links
-- Claude-style assistant names: `CLAUDE_ASSISTANT_NAME`, `CLAUDE_OWNER_NAME`
-- `about`, `links`, `projects`, `welcomeMsg` text arrays
-
-You can edit these directly and then reload `index.html` in a browser.
+- `GITHUB_USERNAME`, `EMAIL_ADDRESS`
+- `linkedin`, `github`, `blog` (empty = hidden from links)
+- `linksOthers` – custom links `{ "twitter": { name: "Twitter", url: "..." } }`
+- `CLAUDE_OWNER_NAME` (from `profile.name`)
+- `about`, `links`, `projects`, `help`, `welcomeMsg`, `banner`
+- `themes` – theme name → CSS path
+- `allCommands` – tab completion list
 
 > This is the simplest mode and does not require any build step.
 
 ## Option B – using the generator (recommended)
 
-This repository also provides a **small generator page** that creates a ready‑to‑use `terminal-config.js` file.
+Open `generator/index.html` in a browser (or the hosted generator).
 
-### 1. Open the generator
+### Generator form sections
 
-Open `generator/index.html` or visit the hosted generator at [`https://pythontogo.github.io/terminal-portfolio-template/generator/`](https://pythontogo.github.io/terminal-portfolio-template/generator/) in your browser (you can also just open the file from your file system).
+| Section | Fields |
+|--------|--------|
+| **Profile** | Full name, email, GitHub username, blog title, Intro/About text (optional) |
+| **Links** | GitHub URL, LinkedIn URL (optional), Blog URL (optional), Others (optional: `Name` and `URL` per line, separated by `|`) |
+| **Theme** | Default theme |
+| **Banner** | Banner text, Banner font style (block, dotted, light, minimal, shadow), live preview |
 
+### Config output
 
-You will see a form with these sections:
-
-- **Profile** – name, tagline, location, author handle, email, GitHub username, blog title.
-- **Links** – GitHub, LinkedIn, blog URLs.
-- **Theme** – default theme (`lila`, `midnight`, or `chocolate`).
-- **Content (optional)** – custom “About” text and a short projects intro line.
-
-### 2. Fill the form and generate
-
-1. Fill in the fields you care about (you can leave optional ones empty).
-2. Click **“Generate config”**.
-3. The **Generated config** textarea will show JavaScript that looks like:
+The generator produces `window.TERMINAL_CONFIG` with:
 
 ```js
-window.TERMINAL_CONFIG = {
-  profile: {
-    // ...
-  },
-  links: {
-    // ...
-  },
-  theme: {
-    // ...
-  },
-  content: {
-    // optional overrides
-  }
-};
+{
+  profile: { name, email, githubUsername, blogTitle },
+  links: { github, linkedin?, blog?, others? },
+  theme: { defaultTheme, bannerText, bannerFont },
+  content: { aboutLines? }
+}
 ```
 
-4. Either:
-   - Copy this text into a new file named `terminal-config.js`, **or**
-   - Click **“Download terminal-config.js”**.
+### How the config is used
 
-### 3. Place `terminal-config.js` in the template root
+| Config path | Used for |
+|-------------|----------|
+| `profile.name` | Banner text (if `theme.bannerText` empty), prompt, about fallback, `CLAUDE_OWNER_NAME` |
+| `profile.email` | `email` command |
+| `profile.githubUsername` | GitHub link, projects repo list |
+| `links.github` | `links` table, `github` command |
+| `links.linkedin` | `links` table, `linkedin` command (optional – hidden if empty) |
+| `links.blog` | `links` table (optional – hidden if empty) |
+| `links.others` | `links` table + custom commands (e.g. `Twitter` → type `twitter`) |
+| `theme.defaultTheme` | Initial theme on load |
+| `theme.bannerText` | ASCII banner text |
+| `theme.bannerFont` | Banner style: block, dotted, light, minimal, shadow |
+| `content.aboutLines` | `about` command body (optional – fallback: "Hi there, I am {Full Name}") |
 
-Save `terminal-config.js` into the **root of this repo**, next to `index.html`.
+## Available commands
 
-The main `index.html` already includes:
+| Command | Description |
+|---------|-------------|
+| `help` | List commands |
+| `about` | Intro/about text |
+| `links` | GitHub, LinkedIn, blog, custom links |
+| `projects` | GitHub repos (via API) |
+| `email` | Open mailto |
+| `linkedin`, `github` | Open URLs (linkedin hidden if not configured) |
+| `theme ls` | List themes |
+| `theme set <name>` | Set theme |
+| `theme random` | Random theme |
+| `banner` | Show ASCII banner |
+| `clear` | Clear terminal |
+| `history` | Command history |
+| `echo <text>` | Echo text |
+| `ping <host>` | Fake ping |
+| `explain`, `run`, `edit` | Claude-style easter eggs |
+| `ls`, `cd` | Fake file listing |
+| `vi`, `vim`, `nvim`, `emacs` | Editor jokes |
+| `sudo` | Permission denied + easter egg |
 
-```html
-<script src="terminal-config.js"></script>
-```
+Custom links from `links.others` become commands (e.g. `Twitter|https://...` → type `twitter`).
 
-before loading the main scripts, so your config will be picked up automatically when the file exists.
+## Themes
 
-### 4. How the config is used
+- `lila` (default), `midnight`, `chocolate`, `og` (original), `rainbow`, `orange`, `olive`, `bluescreen`
 
-If `window.TERMINAL_CONFIG` is present:
+## ASCII banner
 
-- `js/commands.js` will read:
-  - `TERMINAL_CONFIG.profile.githubUsername` → used for:
-    - the `github` link and
-    - the GitHub projects list (`projects` command).
-  - `TERMINAL_CONFIG.profile.email` → used for the `email` command.
-  - `TERMINAL_CONFIG.links.github`, `.linkedin`, `.blog` → used for the `links` table.
-  - `TERMINAL_CONFIG.profile.name` → used as the big ASCII banner text and as the owner name in the `explain`, `run`, `edit` messages.
-  - `TERMINAL_CONFIG.content.aboutLines` (optional) → replaces the default `about` body text.
-- Anything not provided in `TERMINAL_CONFIG` falls back to the defaults defined in `js/commands.js`.
+- **Font styles**: block, dotted, light, minimal, shadow
+- **Text**: Uppercase and lowercase supported
+- **Config**: `theme.bannerText` (or `profile.name`), `theme.bannerFont`
 
-This means:
+## Script load order (`index.html`)
 
-- **You can safely delete or regenerate `terminal-config.js` at any time** – the template still works with built‑in defaults.
-- You can also continue to tweak `js/commands.js` by hand, even when using the generator.
+1. `terminal-config.js` (optional)
+2. `js/github.js`
+3. `js/caret.js`
+4. `js/ascii_banner.js`
+5. `js/commands.js`
+6. `js/main.js`
 
 ## Development notes
 
-- No build tools are required; everything is plain HTML/CSS/JS.
-- To test locally, you can simply open `index.html` in your browser, or serve the folder via a small static server.
-- For deployment, GitHub Pages works out of the box: point it at the root of the repository.
+- No build tools; plain HTML/CSS/JS.
+- Test locally by opening `index.html` or serving the folder.
+- GitHub Pages works out of the box.
 
 ### Example GitHub Actions workflow (GitHub Pages)
 
-You can also deploy this template automatically using GitHub Actions and GitHub Pages.
-
-1. In your repository, create the directory `.github/workflows/`.
-2. Add a file like `.github/workflows/pages.yml` with the following contents:
+1. Create `.github/workflows/`
+2. Add `pages.yml`:
 
 ```yaml
 name: Deploy to GitHub Pages
@@ -158,15 +195,12 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-3. In your repo settings on GitHub, enable **Pages** and choose `GitHub Actions` as the source.
-
-Every push to `main` will then build and deploy the current state of the repository to GitHub Pages.
+3. Enable **Pages** in repo settings, source: **GitHub Actions**.
 
 ## Contributing
 
-Pull requests and improvements are very welcome. If you build something cool on top of this template, feel free to share it back via PR.
+Pull requests and improvements are welcome.
 
 ## Credits
 
-- Original terminal portfolio and template by **PythonToGo**.
-
+- Original terminal portfolio and template by [**PythonToGo**](https://github.com/PythonToGo).
