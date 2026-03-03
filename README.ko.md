@@ -161,49 +161,11 @@ generator는 `window.TERMINAL_CONFIG`를 생성합니다:
 - 로컬 테스트: `index.html` 열기 또는 정적 서버로 폴더 서빙.
 - GitHub Pages 바로 사용 가능.
 
-### GitHub Actions 워크플로 예시 (GitHub Pages)
+### Pages 예시 설정 (GitHub Pages)
 
-1. `.github/workflows/` 생성
-2. `pages.yml` 추가:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Upload static files
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-3. 저장소 설정에서 **Pages** 활성화, 소스: **GitHub Actions**.
+1. `template-config.json`을 GitHub 레포지토리에 추가합니다.
+2. 기존 `.github/workflows/jekyll-gh-pages.yml`을 삭제합니다.
+3. **repositories > Settings > Pages**에서 직접 예시 페이지를 생성/설정합니다.
 
 ## 기여
 

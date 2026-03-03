@@ -161,49 +161,11 @@ Custom links from `links.others` become commands (e.g. `Twitter|https://...` →
 - Test locally by opening `index.html` or serving the folder.
 - GitHub Pages works out of the box.
 
-### Example GitHub Actions workflow (GitHub Pages)
+### Example Pages setup (GitHub Pages)
 
-1. Create `.github/workflows/`
-2. Add `pages.yml`:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Upload static files
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-3. Enable **Pages** in repo settings, source: **GitHub Actions**.
+1. Add `template-config.json` to the GitHub repository.
+2. Delete the existing `.github/workflows/jekyll-gh-pages.yml`.
+3. Create and configure example pages directly in **repositories > Settings > Pages**.
 
 ## Contributing
 

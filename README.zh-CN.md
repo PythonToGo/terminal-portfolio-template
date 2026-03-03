@@ -161,49 +161,11 @@ generator 生成 `window.TERMINAL_CONFIG`：
 - 本地测试：打开 `index.html` 或用静态服务器托管文件夹。
 - GitHub Pages 开箱即用。
 
-### GitHub Actions 工作流示例（GitHub Pages）
+### Pages 示例设置（GitHub Pages）
 
-1. 创建 `.github/workflows/`
-2. 添加 `pages.yml`：
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Upload static files
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-3. 在仓库设置中启用 **Pages**，来源：**GitHub Actions**。
+1. 将 `template-config.json` 添加到 GitHub 仓库。
+2. 删除现有的 `.github/workflows/jekyll-gh-pages.yml`。
+3. 在 **repositories > Settings > Pages** 中直接创建并配置示例页面。
 
 ## 贡献
 
