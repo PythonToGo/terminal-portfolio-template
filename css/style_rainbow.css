@@ -1,23 +1,26 @@
-/* ORIGINAL THEME */
+/* RAINBOW THEME */
 
-body {
+html {
+    height: 100%;
+  }
+  body {
     margin: 0;
-    padding: 15px 20px;
+    padding: 10px 15px;     /* top left */
     min-height: 99%;
-    width: 100%;
-    min-width: 550px;
-    color: #519975;
-    background: #211D1B;
+    width: min(1000px, 95vw);
+    color: #e8e0f0;
+    background: #1a1a2e;
     font-family: cursor, monospace;
     overflow-x: hidden;
+    font-size: min(20px, calc(1.5vw + 7px));
   }
   ::selection {
-    color: #211830;
-    background-color: #519975;
+    color: #1a1a2e;
+    background-color: #a78bfa;
   }
   ::-moz-selection {
-    color: #211830;
-    background-color: #519975;
+    color: #1a1a2e;
+    background-color: #a78bfa;
   }
   textarea {
     left: -1000px;
@@ -29,14 +32,16 @@ body {
   }
   /* Cursor Start */
   .cursor {
-    font-size: 12px;
-    color: #73ABAD;
-    background-color: #73ABAD;
+    font-size: 1.2vw; /*12px;*/
+    color: #f472b6;
+    background-color: #f472b6;
     position: relative;
     opacity: 1;
-    height: 1.5em;
-    width: 10px;
-    max-width: 10px;
+    height: 2vw + 0.5px;
+    min-height: 10px;
+    max-height: 22px;
+    width: 1vw;
+    max-width: 7px;
     transform: translateY(4px);
     overflow: hidden;
     text-indent: -5px;
@@ -49,10 +54,13 @@ body {
       opacity: 0;
     }
   }
+  /* typed text before enter */
   #command {
     cursor: text;
     height: 50px;
-    color: #73ABAD;
+    color: #a78bfa;
+    font-size: min(20px, calc(1.5vw + 7px));
+    margin-top: 15px;
   }
   #liner {
     line-height: 1.3em;
@@ -62,11 +70,9 @@ body {
     opacity: 0;
   }
   #liner::before {
-    color: #519975;
+    color: #34d399;
+    font-size: min(20px, calc(1.5vw + 7px));
     content: attr(data-terminal-prompt);
-  }
-  #liner.password::before {
-    content: "Password:";
   }
   @keyframes show {
     from {
@@ -76,22 +82,47 @@ body {
       opacity: 1;
     }
   }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  tr td:first-child {
+    padding-left: 0px;
+  }
+  td {
+    padding: 0 5vw 1vh 0;
+  }
+  
   /* Cursor End */
   p {
     display: block;
     line-height: 1.3em;
     margin: 0;
     overflow: hidden;
-    white-space: nowrap;
     margin: 0;
     letter-spacing: 0.05em;
     animation: typing 0.5s steps(30, end);
+    font-size: min(20px, calc(1.5vw + 7px));
+  }
+  .terminal-banner {
+    white-space: nowrap;
+    font-size: min(20px, calc(1vw));
+    font-weight: bolder;
+    background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .terminal-welcome-msg {
+    font-size: min(20px, calc(1.5vw + 7px));
   }
   .no-animation {
     animation: typing 0 steps(30, end);
   }
   .margin {
-    margin-left: 20px;
+    margin-left: 3%;
+    margin-right: 3%;
   }
   @keyframes typing {
     from {
@@ -102,31 +133,34 @@ body {
     }
   }
   .index {
-    color: #DCDCCC;
+    color: #f472b6;
   }
+  /* For main texts */
   .color2 {
-    color: #B89076;
+    color: #67e8f9;
   }
+  /* Commands within text with glow */
   .command {
-    color: #73ABAD;
-    text-shadow: 0 0 5px #73ABAD; 
+    color: #a78bfa;
+    text-shadow: 0 0 5px #a78bfa; 
   }
   .error {
-    color: #B89076;
+    color: #f87171;
   }
   .white {
-    color: #fff;
+    color: #f8fafc;
   }
-  .inherit,
+  /* terminal output and links */
+  .inherit, 
   a {
-    color: #9C8394;
+    color: #fcd34d;
   }
   a {
     text-decoration: inherit;
   }
   a:hover {
-    background: #73ABAD;
-    color: #211830;
+    background: #a78bfa33;
+    color: #c4b5fd;
   }
   a:focus {
     outline: 0;
@@ -157,7 +191,7 @@ body {
     top: 8px;
     right: 14px;
     font-size: 12px;
-    color: #9C8394;
+    color: #a78bfa;
     opacity: 0.8;
     pointer-events: none;
   }
