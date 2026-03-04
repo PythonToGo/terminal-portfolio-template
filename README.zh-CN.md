@@ -161,11 +161,21 @@ generator 生成 `window.TERMINAL_CONFIG`：
 - 本地测试：打开 `index.html` 或用静态服务器托管文件夹。
 - GitHub Pages 开箱即用。
 
-### Pages 示例设置（GitHub Pages）
+## GitHub Pages 部署（使用 Actions）
 
-1. 将 `template-config.json` 添加到 GitHub 仓库。
-2. 删除现有的 `.github/workflows/jekyll-gh-pages.yml`。
-3. 在 **repositories > Settings > Pages** 中直接创建并配置示例页面。
+此模板已经自带一个可直接使用的 GitHub Actions 工作流：`.github/workflows/deploy-pages.yml`。
+
+1. 使用此仓库作为模板创建新仓库，或 fork/clone 到**你自己的 GitHub 账户**下。
+2. 将更改推送到默认分支（`main` 或 `master`）。
+3. 在该仓库中打开 **Settings → Pages**，将 **Source** 设置为 **GitHub Actions**。
+
+第一次成功运行 **Deploy terminal portfolio to GitHub Pages** 工作流后，你的网站将可以通过如下地址访问：
+
+- `https://<你的-GitHub-用户名>.github.io/<你的-仓库名>/`
+
+本模板原始仓库的演示站点部署在：
+
+- `https://pythontogo.github.io/terminal-portfolio-template`
 
 ## 贡献
 

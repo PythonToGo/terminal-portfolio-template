@@ -91,6 +91,13 @@ function applyThemePreview(themeId) {
     return;
   }
 
+  // Build banner preview rule separately so we can avoid overriding
+  // the rainbow gradient background when the rainbow theme is selected.
+  var bannerPreviewRule =
+    ".banner-preview { " +
+    (themeId === "rainbow" ? "" : "background: " + colors.inputBg + "; ") +
+    "color: " + colors.mutedColor + "; border-color: " + colors.cardBorder + "; } ";
+
   styleEl.textContent =
     "body { background: " + colors.bodyBg + "; color: " + colors.bodyColor + "; } " +
     ".page-header, .page-header h1, .page-header p { color: " + colors.headerColor + " !important; } " +
@@ -98,10 +105,20 @@ function applyThemePreview(themeId) {
     ".card h2, .card p, .card li { color: " + colors.bodyColor + " !important; } " +
     ".field-row label { color: " + colors.mutedColor + " !important; } " +
     ".field-row input, .field-row textarea, .field-row select { background: " + colors.inputBg + "; color: " + colors.bodyColor + "; border-color: " + colors.cardBorder + "; } " +
-    ".banner-preview { background: " + colors.inputBg + "; color: " + colors.mutedColor + "; border-color: " + colors.cardBorder + "; } " +
+    bannerPreviewRule +
     ".output { background: " + colors.inputBg + "; color: " + colors.bodyColor + "; border-color: " + colors.cardBorder + "; } " +
     "code { background: " + colors.cardBg + "; } " +
     "#downloadBtn { color: " + colors.bodyColor + "; border-color: " + colors.cardBorder + "; }";
+
+  // Apply rainbow text style to banner preview when rainbow theme is selected
+  var bannerPreview = document.getElementById("bannerPreview");
+  if (bannerPreview) {
+    if (themeId === "rainbow") {
+      bannerPreview.classList.add("rainbow-text");
+    } else {
+      bannerPreview.classList.remove("rainbow-text");
+    }
+  }
 }
 
 function getValue(id, fallback) {

@@ -161,11 +161,21 @@ Custom links from `links.others` become commands (e.g. `Twitter|https://...` →
 - Test locally by opening `index.html` or serving the folder.
 - GitHub Pages works out of the box.
 
-### Example Pages setup (GitHub Pages)
+## GitHub Pages deployment (via Actions)
 
-1. Add `template-config.json` to the GitHub repository.
-2. Delete the existing `.github/workflows/jekyll-gh-pages.yml`.
-3. Create and configure example pages directly in **repositories > Settings > Pages**.
+This template includes a ready-to-use GitHub Actions workflow at `.github/workflows/deploy-pages.yml`.
+
+1. Create a new repository from this template (or fork/clone it into your own account).
+2. Push your changes to the default branch (`main` or `master`).
+3. In your repository, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+
+After the first successful run of the **Deploy terminal portfolio to GitHub Pages** workflow, your site will be available at:
+
+- `https://<your-github-username>.github.io/<your-repo-name>/`
+
+For this template repository itself, the demo is published at:
+
+- `https://pythontogo.github.io/terminal-portfolio-template`
 
 ## Contributing
 

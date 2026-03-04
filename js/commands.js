@@ -29,17 +29,21 @@ var about = (function () {
     for (var i = 0; i < TERMINAL_CONFIG.content.aboutLines.length; i++) {
       lines.push(TERMINAL_CONFIG.content.aboutLines[i]);
     }
-    lines.push("This terminal template was made by PythonToGo.");
     lines.push("<br>");
     return lines;
   }
-  var fullName = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Your Name";
-  return [
+  var fullName = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Taey";
+  var lines = [
     "<br>",
-    "Hi there, 👋🏽",
+    "Hi there, 👋🏻",
     "I am " + fullName,
-    "<br>",
   ];
+  if (fullName === "Taey") {
+    lines.push("a Korean Dream Explorer based in Germany.");
+    lines.push("I'm driven by the challenge of building intelligent systems that learn, adapt, and scale, passionate about applying deep learning and machine learning to real-world problems and managing the entire machine learning lifecycle through MLOps practices.");
+  }
+  lines.push("<br>");
+  return lines;
 })();
 
 links = (function () {
@@ -66,7 +70,7 @@ projects = [
   `<div id="repo-box"></div>`,
 ];
 
-var profileFullName = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Your Name";
+var profileFullName = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Taey";
 help = [
   "<br>",
   'Use these commands to navigate my web-terminal:',
@@ -100,6 +104,7 @@ banner = createAsciiBanner(bannerText, bannerFontStyle);
 welcomeMsg = [
   '<span class="color2 terminal-welcome-msg">Welcome to my personal terminal-like website!</span>',
   "<span class=\"color2 terminal-welcome-msg\">Type </span> <span class=\"command terminal-welcome-msg\">'help'</span><span class=\"color2 terminal-welcome-msg\"> to see a list of available commands!</span>",
+  '<span class="terminal-welcome-msg" style="font-size: 0.8em;">This terminal template was made by <a class="command" href="https://github.com/PythonToGo" target="_blank">PythonToGo</a>.</span>',
   "<br>",
 ];
 

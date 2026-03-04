@@ -161,11 +161,21 @@ Generator `window.TERMINAL_CONFIG` oluşturur:
 - Yerel test: `index.html` açın veya klasörü statik sunucu ile sunun.
 - GitHub Pages hazır çalışır.
 
-### Örnek Pages kurulumu (GitHub Pages)
+## GitHub Pages dağıtımı (Actions ile)
 
-1. `template-config.json` dosyasını GitHub deposuna ekleyin.
-2. Mevcut `.github/workflows/jekyll-gh-pages.yml` dosyasını silin.
-3. **repositories > Settings > Pages** bölümünden doğrudan örnek sayfaları oluşturun ve yapılandırın.
+Bu şablon, `.github/workflows/deploy-pages.yml` konumunda kullanıma hazır bir GitHub Actions iş akışı içerir.
+
+1. Bu depoyu şablon olarak kullanarak yeni bir depo oluşturun veya kendi hesabınıza fork/clone edin.
+2. Değişikliklerinizi varsayılan dala (`main` veya `master`) push edin.
+3. Depoda **Settings → Pages** bölümüne gidin ve **Source** alanını **GitHub Actions** olarak ayarlayın.
+
+**Deploy terminal portfolio to GitHub Pages** iş akışı ilk kez başarıyla çalıştıktan sonra siteniz şu adresten erişilebilir olur:
+
+- `https://<GitHub-kullanıcı-adınız>.github.io/<depo-adınız>/`
+
+Bu şablonun kendi demo sürümü şu adreste yayınlanmaktadır:
+
+- `https://pythontogo.github.io/terminal-portfolio-template`
 
 ## Katkıda bulunma
 

@@ -121,6 +121,20 @@ body {
   color: #94a3b8;
   margin: 0;
   overflow-x: auto;
+  white-space: pre;
+}
+
+/* Rainbow text style */
+.rainbow-text {
+  background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.banner-preview.rainbow-text {
+  font-weight: bolder;
+  font-size: min(20px, calc(1vw));
 }
 
 .actions {
