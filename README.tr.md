@@ -1,186 +1,218 @@
-# Terminal Portfolio Template
+# 👨‍💻 Terminal Portfolio Template
 
-**Dil:** [English](README.md) | [한국어](README.ko.md) | [Deutsch](README.de.md) | [中文](README.zh-CN.md) | [Türkçe](README.tr.md)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+[![GitHub Pages](https://img.shields.io/badge/Deployed_on-GitHub_Pages-success?style=flat-square&logo=github)](https://pythontogo.github.io/terminal-portfolio-template)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+
+**Read in:** [English](README.md) | [한국어](README.ko.md) | [Deutsch](README.de.md) | [中文](README.zh-CN.md) | [Türkçe](README.tr.md)
 
 ---
 
-Bu, **terminal tarzı kişisel ana sayfa** şablonudur. Yalnızca HTML, CSS ve JavaScript kullanan basit bir statik site olarak oluşturulmuştur.
+Bu, hafif bir **terminal tarzı kişisel web sayfası şablonudur**. Herhangi bir derleme aracına (build tool) ihtiyaç duymayan basit bir statik site olarak oluşturulmuştur: Sadece saf HTML, CSS ve JavaScript.
 
-Birkaç yapılandırma değerini düzenleyerek veya yerleşik **config generator**'ı kullanarak kendi sayfanızı oluşturabilirsiniz.
+Bu depoyu kendi portföyünüz için bir **şablon (template)** olarak kullanabilirsiniz. Bunun için birkaç yapılandırma değerini manuel olarak düzenleyebilir veya yerleşik **yapılandırma oluşturucuyu (config generator)** kullanabilirsiniz.
 
-<!-- <img width="1036" height="850" alt="image" src="https://github.com/user-attachments/assets/9d5c85f8-6b2d-438e-ac22-3578dbbbefc2" /> -->
+[![Live Demo](https://img.shields.io/badge/🖥️_Live_Demo-2EA043?style=for-the-badge)](https://pythontogo.github.io/terminal-portfolio-template)
+[![Config Generator](https://img.shields.io/badge/⚙️_Config_Generator-0052CC?style=for-the-badge)](https://pythontogo.github.io/terminal-portfolio-template/generator/)
 
-## Demo
+## 👀 Önizleme ve Demo (Preview & Demo)
 
-![demo_terminal_like_portfolio-ezgif com-crop](https://github.com/user-attachments/assets/b1a77e2b-0ec1-40d4-b592-3a73081e96f0)
+### Canlı Demo (Live Demo)
+> 💡 Daktilo animasyonunu ve etkileşimli komutları canlı olarak deneyimleyin.
+![demo_terminal_like_portfolio](https://github.com/user-attachments/assets/b1a77e2b-0ec1-40d4-b592-3a73081e96f0)
 
-### Config oluşturma ve kendi web sitenizi yapma
+### Yapılandırma Oluşturucu (Config Generator)
+> ⚙️ Kodlara hiç dokunmadan kişiselleştirilmiş yapılandırma dosyanızı görsel olarak oluşturun!
+![how_to_use_generator](https://github.com/user-attachments/assets/3f040e0c-4f50-4e9a-8954-d46b2a6e4804)
 
-![how_to_use-ezgif com-crop](https://github.com/user-attachments/assets/3f040e0c-4f50-4e9a-8954-d46b2a6e4804)
+Geliştirici: [**PythonToGo**](https://github.com/PythonToGo)
 
-[**PythonToGo**](https://github.com/PythonToGo) tarafından yapılmıştır.
+---
 
-## Proje yapısı
+## 🚀 Hızlı Başlangıç (Quick Start)
+
+Terminal portföyünüzü saniyeler içinde çalışır hale getirin. Aşağıdaki komutları kopyalayıp terminalinize yapıştırın:
+
+```bash
+# 1. Depoyu klonlayın
+git clone [https://github.com/PythonToGo/terminal-portfolio-template.git](https://github.com/PythonToGo/terminal-portfolio-template.git)
+
+# 2. Dizin içerisine girin
+cd terminal-portfolio-template
+
+# 3. index.html dosyasını varsayılan web tarayıcınızda açın
+# (macOS için 'open', Windows için 'start', Linux için 'xdg-open' kullanın)
+open index.html
 
 ```
+
+Açıldıktan sonra, aşağıdaki yöntemlerden birini kullanarak özelleştirebilirsiniz:
+
+* **A Seçeneği (Manuel):** Doğrudan `js/commands.js` dosyasını düzenleyin.
+* **B Seçeneği (Önerilen):** `terminal-config.js` dosyanızı kolayca oluşturmak için **[Yapılandırma Oluşturucuyu (Config Generator)](https://pythontogo.github.io/terminal-portfolio-template/generator/)** kullanın.
+
+---
+
+## 🛠 Proje Yapısı (Project Structure)
+
+Temel dosya ve dizinlere kısa bir bakış:
+
+```text
 .
 ├── index.html              # Ana terminal sayfası
-├── terminal-config.js      # Kullanıcı yapılandırması (üretilir, isteğe bağlı)
-├── js/
-│   ├── main.js             # Komut işleme, UI mantığı
-│   ├── commands.js         # Yapılandırma değerleri, içerik dizileri, komut listesi
-│   ├── ascii_banner.js     # ASCII banner fontları ve işleme
-│   ├── github.js           # GitHub API – projeler için repo çeker
-│   └── caret.js            # Yazma simülasyonu, imleç
-├── css/
-│   ├── style_lila.css      # Varsayılan tema
-│   ├── style_midnight.css
-│   ├── style_chocolate.css
-│   ├── style_og.css         # original
-│   ├── style_rainbow.css
-│   ├── style_orange.css
-│   ├── style_olive.css
-│   └── style_bluescreen.css
-└── generator/
-    ├── index.html          # Config generator formu
-    ├── main.js             # Form mantığı, config oluşturma
-    └── style.css           # Generator stilleri
+├── terminal-config.js      # Kişisel yapılandırmanız (isteğe bağlı, oluşturucu ile üretilir)
+├── js/                     # Çekirdek mantık (komutlar, GitHub API, vb.)
+├── css/                    # Çeşitli terminal renk temaları
+└── generator/              # Web tabanlı yapılandırma oluşturucu aracı
+    ├── index.html          # Yapılandırma oluşturucu formu
+    ├── main.js             # Form mantığı ve yapılandırma oluşturma
+    └── style.css           # Oluşturucu stilleri
+
 ```
 
-## Hızlı başlangıç
+## ⚙️ Yapılandırma Seçenekleri (Configuration Options)
 
-1. Bu depoyu klonlayın veya GitHub şablonu olarak kullanın.
-2. Terminali görmek için tarayıcıda `index.html` açın.
-3. İki yoldan biriyle özelleştirin:
-   - **Seçenek A – `js/commands.js` dosyasını doğrudan düzenleyin** VEYA
-   - **Seçenek B – `terminal-config.js` oluşturmak için generator kullanın** (hızlı kurulum: [**Config Generator'a Git**](https://pythontogo.github.io/terminal-portfolio-template/generator/) ).
+### A Seçeneği – Manuel Yapılandırma
 
-## Seçenek A – manuel yapılandırma
+`js/commands.js` dosyasını açın ve dosyanın en üstündeki sabit değerleri düzenleyin:
 
-`js/commands.js` dosyasını açın ve üstteki değerleri düzenleyin:
+* `GITHUB_USERNAME`, `EMAIL_ADDRESS`
+* `linkedin`, `github`, `blog` (bağlantılar bölümünden gizlemek için boş `""` bırakın)
+* `linksOthers` – Şu formatı kullanarak özel bağlantılar ekleyin: `{ "twitter": { name: "Twitter", url: "..." } }`
+* `CLAUDE_OWNER_NAME` (yedek isim)
+* `about`, `links`, `projects`, `help`, `welcomeMsg`, `banner`
+* `themes` – Tema adlarını ilgili CSS dosya yollarına eşler
+* `allCommands` – Tab (Sekme) otomatik tamamlama için kullanılan listeyi tanımlar
 
-- `GITHUB_USERNAME`, `EMAIL_ADDRESS`
-- `linkedin`, `github`, `blog` (boş = linklerde gizlenir)
-- `linksOthers` – özel linkler `{ "twitter": { name: "Twitter", url: "..." } }`
-- `CLAUDE_OWNER_NAME` (`profile.name`'den)
-- `about`, `links`, `projects`, `help`, `welcomeMsg`, `banner`
-- `themes` – tema adı → CSS yolu
-- `allCommands` – sekme tamamlama listesi
+> **Not:** Bu en basit moddur ve hiçbir derleme adımı veya harici yapılandırma dosyası gerektirmez.
 
-> Bu en basit moddur ve herhangi bir derleme adımı gerektirmez.
+### B Seçeneği – Oluşturucuyu Kullanma (Önerilen)
 
-## Seçenek B – generator kullanma (önerilen)
+Tarayıcıda `generator/index.html` dosyasını açın veya [barındırılan oluşturucuyu](https://pythontogo.github.io/terminal-portfolio-template/generator/) ziyaret edin.
 
-Tarayıcıda `generator/index.html` açın (veya barındırılan generator'ı kullanın).
-
-### Generator form bölümleri
+#### Oluşturucu Form Bölümleri
 
 | Bölüm | Alanlar |
-|-------|---------|
-| **Profile** | Ad soyad, e-posta, GitHub kullanıcı adı, blog başlığı, Giriş/About metni (isteğe bağlı) |
-| **Links** | GitHub URL, LinkedIn URL (isteğe bağlı), Blog URL (isteğe bağlı), Diğerleri (isteğe bağlı: satır başına `Name` ve `URL`, `\|` ile ayrılmış) |
-| **Theme** | Varsayılan tema |
-| **Banner** | Banner metni, Banner font stili (block, dotted, light, minimal, shadow), canlı önizleme |
+| --- | --- |
+| **Profile (Profil)** | Tam ad, e-posta, GitHub kullanıcı adı, blog başlığı, Giriş/Hakkımda metni (isteğe bağlı) |
+| **Links (Bağlantılar)** | GitHub URL, LinkedIn URL (isteğe bağlı), Blog URL (isteğe bağlı), Diğerleri (isteğe bağlı: Her satıra bir Ad ve URL, ` |
+| **Theme (Tema)** | Varsayılan tema |
+| **Banner (Afiş)** | Afiş metni, Afiş yazı tipi stili (block, dotted, light, minimal, shadow), canlı önizleme |
 
-### Config çıktısı
+#### Yapılandırma Çıktısı
 
-Generator `window.TERMINAL_CONFIG` oluşturur:
+Oluşturucu, aşağıdaki gibi görünen bir `window.TERMINAL_CONFIG` nesnesi üretir:
 
-```js
+```javascript
 {
   profile: { name, email, githubUsername, blogTitle },
   links: { github, linkedin?, blog?, others? },
   theme: { defaultTheme, bannerText, bannerFont },
   content: { aboutLines? }
 }
+
 ```
 
-### Config kullanımı
+#### Yapılandırma Nasıl Kullanılır?
 
-| Config yolu | Kullanım |
-|-------------|----------|
-| `profile.name` | Banner metni (`theme.bannerText` boşsa), istem, about yedeği, `CLAUDE_OWNER_NAME` |
-| `profile.email` | `email` komutu |
-| `profile.githubUsername` | GitHub linki, projeler repo listesi |
-| `links.github` | `links` tablosu, `github` komutu |
-| `links.linkedin` | `links` tablosu, `linkedin` komutu (isteğe bağlı – boşsa gizlenir) |
-| `links.blog` | `links` tablosu (isteğe bağlı – boşsa gizlenir) |
-| `links.others` | `links` tablosu + özel komutlar (örn. `Twitter` → `twitter` yazın) |
-| `theme.defaultTheme` | Yüklemede başlangıç teması |
-| `theme.bannerText` | ASCII banner metni |
-| `theme.bannerFont` | Banner stili: block, dotted, light, minimal, shadow |
-| `content.aboutLines` | `about` komutu gövdesi (isteğe bağlı – yedek: "Hi there, I am {Full Name}") |
+| Yapılandırma Yolu | Kullanım Amacı |
+| --- | --- |
+| `profile.name` | Afiş metni (`theme.bannerText` boşsa), terminal komut satırı, yedek about metni, `CLAUDE_OWNER_NAME` |
+| `profile.email` | `email` komutunu çalıştırırken kullanılır |
+| `profile.githubUsername` | GitHub bağlantısını oluşturur ve `projects` komutu için depoları (repo) çeker |
+| `links.github` | `links` tablosunda gösterilir, `github` komutu tarafından kullanılır |
+| `links.linkedin` | `links` tablosunda gösterilir, `linkedin` komutu tarafından kullanılır (boşsa gizlenir) |
+| `links.blog` | `links` tablosunda gösterilir (boşsa gizlenir) |
+| `links.others` | `links` tablosunda gösterilir ve özel komutlar oluşturur (Örn: `Twitter` eklendiğinde `twitter` yazabilirsiniz) |
+| `theme.defaultTheme` | Sayfa yüklendiğinde uygulanacak başlangıç renk temasını ayarlar |
+| `theme.bannerText` | ASCII afiş (banner) olarak oluşturulacak metin |
+| `theme.bannerFont` | Afiş stili (block, dotted, light, minimal, shadow) |
+| `content.aboutLines` | `about` komutunun çıktı içeriği (Yedek değer: "Hi there, I am {Tam Ad}") |
 
-## Mevcut komutlar
+---
+
+## 💻 Kullanılabilir Komutlar (Available Commands)
 
 | Komut | Açıklama |
-|-------|----------|
-| `help` | Komut listesi |
-| `about` | Giriş/About metni |
-| `links` | GitHub, LinkedIn, blog, özel linkler |
-| `projects` | GitHub repoları (API üzerinden) |
-| `email` | Mailto aç |
-| `linkedin`, `github` | URL'leri aç (linkedin yapılandırılmamışsa gizlenir) |
-| `theme ls` | Temaları listele |
-| `theme set <name>` | Tema ayarla |
-| `theme random` | Rastgele tema |
-| `banner` | ASCII banner göster |
-| `clear` | Terminali temizle |
-| `history` | Komut geçmişi |
-| `echo <text>` | Metin yazdır |
-| `ping <host>` | Sahte ping |
-| `explain`, `run`, `edit` | Claude tarzı easter egg'ler |
-| `ls`, `cd` | Sahte dosya listesi |
-| `vi`, `vim`, `nvim`, `emacs` | Editör şakaları |
-| `sudo` | İzin reddedildi + easter egg |
+| --- | --- |
+| `help` | Kullanılabilir tüm komutları listeler |
+| `about` | Giriş/hakkımda metnini gösterir |
+| `links` | GitHub, LinkedIn, blog ve özel bağlantıları içeren bir tablo gösterir |
+| `projects` | GitHub API aracılığıyla GitHub depolarını (repo) çeker ve gösterir |
+| `email` | Varsayılan e-posta istemcisini açar (`mailto:`) |
+| `linkedin`, `github` | İlgili URL'leri yeni bir sekmede açar (yapılandırılmamışsa linkedin gizlenir) |
+| `theme ls` | Kullanılabilir tüm temaları listeler |
+| `theme set <name>` | Mevcut temayı değiştirir |
+| `theme random` | Rastgele bir tema uygular |
+| `banner` | ASCII afişi (banner) gösterir |
+| `clear` | Terminal çıktı ekranını temizler |
+| `history` | Komut geçmişini gösterir |
+| `echo <text>` | Girilen metni terminalde aynen yazdırır |
+| `ping <host>` | Sahte ping simülasyonu çalıştırır |
+| `explain`, `run`, `edit` | Claude tarzı sürpriz yumurtalar (easter eggs) |
+| `ls`, `cd` | Sahte dosya sistemi gezinme komutları |
+| `vi`, `vim`, `nvim`, `emacs` | Metin düzenleyici şakaları |
+| `sudo` | Erişim engellendi mesajı + sürpriz yumurta |
 
-`links.others`'taki özel linkler komut olur (örn. `Twitter|https://...` → `twitter` yazın).
+*Not: `links.others` içine eklenen özel bağlantılar otomatik olarak komut haline gelir. (Örn: `Twitter|https://...` olarak yapılandırmak `twitter` komutunu etkinleştirir).*
 
-## Temalar
+---
 
-- `lila` (varsayılan), `midnight`, `chocolate`, `og` (original), `rainbow`, `orange`, `olive`, `bluescreen`
+## 🎨 Temalar ve Özelleştirme (Themes & Customization)
 
-## ASCII banner
+### Temalar
 
-- **Font stilleri**: block, dotted, light, minimal, shadow
-- **Metin**: Büyük ve küçük harf desteklenir
-- **Config**: `theme.bannerText` (veya `profile.name`), `theme.bannerFont`
+Aşağıdaki temalar varsayılan olarak mevcuttur:
+`lila` (varsayılan), `midnight`, `chocolate`, `og` (orijinal), `rainbow`, `orange`, `olive`, `bluescreen`
 
-## Betik yükleme sırası (`index.html`)
+### ASCII Afiş (Banner)
 
-1. `terminal-config.js` (isteğe bağlı)
+* **Yazı tipi stilleri:** block, dotted, light, minimal, shadow
+* **Metin formatı:** Hem büyük hem de küçük harfler desteklenir.
+* **Yapılandırma:** `theme.bannerText` (veya yedek olarak `profile.name`) ve `theme.bannerFont` aracılığıyla yönetilir.
+
+---
+
+## 🏗 Geliştirme Notları (Development Notes)
+
+### Komut Dosyası Yükleme Sırası (`index.html`)
+
+Her şeyin doğru çalışmasını sağlamak için, komut dosyaları (script) şu sırayla yüklenir:
+
+1. `terminal-config.js` (isteğe bağlı, oluşturucu çıktısı)
 2. `js/github.js`
 3. `js/caret.js`
 4. `js/ascii_banner.js`
 5. `js/commands.js`
 6. `js/main.js`
 
-## Geliştirme notları
+### Yerel Test
 
-- Derleme aracı yok; düz HTML/CSS/JS.
-- Yerel test: `index.html` açın veya klasörü statik sunucu ile sunun.
-- GitHub Pages hazır çalışır.
+* Hiçbir derleme aracına (Webpack, Vite, Node.js) ihtiyaç yoktur.
+* Tarayıcınızda doğrudan `index.html` dosyasını açın veya herhangi bir basit yerel web sunucusunu (örn. `python -m http.server`) kullanarak klasörü sunun.
 
-## GitHub Pages dağıtımı (Actions ile)
+---
 
-Bu şablon, `.github/workflows/deploy-pages.yml` konumunda kullanıma hazır bir GitHub Actions iş akışı içerir.
+## 🌐 Dağıtım / Yayınlama (GitHub Pages)
 
-1. Bu depoyu şablon olarak kullanarak yeni bir depo oluşturun veya kendi hesabınıza fork/clone edin.
-2. Değişikliklerinizi varsayılan dala (`main` veya `master`) push edin.
-3. Depoda **Settings → Pages** bölümüne gidin ve **Source** alanını **GitHub Actions** olarak ayarlayın.
+Bu şablon, sitenizi otomatik olarak yayınlamak (deploy) için `.github/workflows/deploy-pages.yml` konumunda kullanıma hazır bir GitHub Actions iş akışı içerir.
 
-**Deploy terminal portfolio to GitHub Pages** iş akışı ilk kez başarıyla çalıştıktan sonra siteniz şu adresten erişilebilir olur:
+1. Bu şablonu kullanarak yeni bir depo oluşturun (veya Fork/Clone yapın).
+2. Yaptığınız özelleştirmeleri varsayılan dalınıza (branch - `main` veya `master`) pushlayın.
+3. GitHub deponuzda **Settings (Ayarlar) → Pages (Sayfalar)** bölümüne gidin.
+4. **Source (Kaynak)** açılır menüsünü **GitHub Actions** olarak ayarlayın.
 
-- `https://<GitHub-kullanıcı-adınız>.github.io/<depo-adınız>/`
+**"Deploy terminal portfolio to GitHub Pages"** adlı GitHub Action ilk kez başarıyla çalıştıktan sonra, canlı sitenize şu adresten erişilebilecektir:
+`https://<github-kullanici-adiniz>.github.io/<repo-adiniz>/`
 
-Bu şablonun kendi demo sürümü şu adreste yayınlanmaktadır:
+---
 
-- `https://pythontogo.github.io/terminal-portfolio-template`
+## 🤝 Katkıda Bulunma (Contributing)
 
-## Katkıda bulunma
+Pull Request (PR) gönderimleri, hata bildirimleri (bug report) ve iyileştirme önerileri her zaman kabul edilir!
 
-Pull request'ler ve iyileştirmeler memnuniyetle karşılanır.
+## 📜 Krediler (Credits)
 
-## Teşekkürler
-
-- Orijinal terminal portfolyo ve şablon [**PythonToGo**](https://github.com/PythonToGo) tarafından yapılmıştır.
+* Orijinal terminal portföyü konsepti ve şablonu **[PythonToGo](https://github.com/PythonToGo)** tarafından oluşturulmuştur.
