@@ -169,6 +169,12 @@ function commander(cmd) {
       loopLines(commandsLog, "color2", 20);
       addLine("<br>", "command", 80 * commandsLog.length + 50);
       break;
+    case "home":
+      addLine("Returning to home screen...", "inherit no-animation", 0);
+      setTimeout(function() {
+        document.location.reload(true);
+      }, 150);
+      break;
     case "clear":
       setTimeout(function() {
         terminal.innerHTML = '<a id="before"></a>';
@@ -333,12 +339,29 @@ async function loopLines(name, style, time) {
 }
 
 function setThemeCSS(theme) {
-  // Selects other CSS theme
-  var lnk = document.createElement('link');
-  lnk.href = themes[theme];
-  lnk.rel = 'stylesheet';
-  lnk.type = 'text/css';
-  (document.head||document.documentElement).appendChild(lnk);
+  // Switch the active CSS theme by reusing (or creating) a single theme stylesheet link
+  if (!themes || !themes[theme]) return;
+
+  var href = themes[theme];
+  var head = document.head || document.documentElement;
+
+  // Prefer an existing explicitly tagged theme link
+  var link =
+    document.querySelector('link[rel="stylesheet"][data-terminal-theme="true"]') ||
+    // Fallback: first stylesheet that looks like one of our theme files
+    document.querySelector('link[rel="stylesheet"][href^="css/style_"]');
+
+  if (link) {
+    link.setAttribute('href', href);
+    link.setAttribute('data-terminal-theme', 'true');
+  } else {
+    link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = href;
+    link.setAttribute('data-terminal-theme', 'true');
+    head.appendChild(link);
+  }
 }
 
 function completeQuery(arr, query) {

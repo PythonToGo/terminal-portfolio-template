@@ -161,3 +161,11 @@ body {
     opacity: 0.8;
     pointer-events: none;
   }
+
+  /* Generator link highlight */
+  .terminal-generator-link {
+    position: relative;
+    color: #73ABAD;
+    text-shadow: 0 0 6px #73ABAD;
+    animation: blinker 1s linear infinite;
+  }

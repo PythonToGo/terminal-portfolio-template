@@ -48,13 +48,27 @@ var about = (function () {
 
 links = (function () {
   var rows = [];
-  if (linkedin) {
-    rows.push("<tr><td>linkedin</td><td><a href=\"" + linkedin + "\" target=\"_blank\">" + linkedin + "</a></td></tr>");
+  var fullName = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Taey";
+
+  // If this is Taey's own page, always show fixed links
+  if (fullName === "Taey") {
+    var taeyGithub = "https://github.com/PythonToGo";
+    var taeyLinkedin = "https://linkedin.com/in/taeyoungkimtaey";
+    var taeyBlog = "https://pythontogo.github.io/";
+
+    rows.push("<tr><td>linkedin</td><td><a href=\"" + taeyLinkedin + "\" target=\"_blank\">" + taeyLinkedin + "</a></td></tr>");
+    rows.push("<tr><td>github</td><td><a href=\"" + taeyGithub + "\" target=\"_blank\">" + taeyGithub + "</a></td></tr>");
+    rows.push("<tr><td>blog</td><td><a href=\"" + taeyBlog + "\" target=\"_blank\">" + taeyBlog + "</a></td></tr>");
+  } else {
+    if (linkedin) {
+      rows.push("<tr><td>linkedin</td><td><a href=\"" + linkedin + "\" target=\"_blank\">" + linkedin + "</a></td></tr>");
+    }
+    rows.push("<tr><td>github</td><td><a href=\"" + github + "\" target=\"_blank\">" + github + "</a></td></tr>");
+    if (blog) {
+      rows.push("<tr><td>blog</td><td><a href=\"" + blog + "\" target=\"_blank\">" + blog + "</a></td></tr>");
+    }
   }
-  rows.push("<tr><td>github</td><td><a href=\"" + github + "\" target=\"_blank\">" + github + "</a></td></tr>");
-  if (blog) {
-    rows.push("<tr><td>blog</td><td><a href=\"" + blog + "\" target=\"_blank\">" + blog + "</a></td></tr>");
-  }
+
   for (var k in linksOthers) {
     var o = linksOthers[k];
     rows.push("<tr><td>" + o.name + "</td><td><a href=\"" + o.url + "\" target=\"_blank\">" + o.url + "</a></td></tr>");
@@ -85,6 +99,7 @@ help = [
   <tr><td><span class="command">history</span></td><td>View command history</td></tr>
   <tr><td><span class="command">help</span></td><td>You obviously already know what this does</td></tr>
   <tr><td><span class="command">email</span></td><td>Do not email me</td></tr>
+  <tr><td><span class="command">home</span></td><td>Return to the home screen</td></tr>
   <tr><td><span class="command">clear</span></td><td>Clear terminal</td></tr>
   <tr><td><span class="command">banner</span></td><td>Display the banner</td></tr>
   <tr><td><span class="command">theme</span></td><td>Change the theme</td></tr>
@@ -101,15 +116,29 @@ var bannerText = (TERMINAL_CONFIG.theme && TERMINAL_CONFIG.theme.bannerText) ||
 var bannerFontStyle = (TERMINAL_CONFIG.theme && TERMINAL_CONFIG.theme.bannerFont) || "block";
 banner = createAsciiBanner(bannerText, bannerFontStyle);
 
-welcomeMsg = [
-  '<span class="color2 terminal-welcome-msg">Welcome to my personal terminal-like website!</span>',
-  "<span class=\"color2 terminal-welcome-msg\">Type </span> <span class=\"command terminal-welcome-msg\">'help'</span><span class=\"color2 terminal-welcome-msg\"> to see a list of available commands!</span>",
-  '<span class="terminal-welcome-msg" style="font-size: 0.8em;">This terminal template was made by <a class="command" href="https://github.com/PythonToGo" target="_blank">PythonToGo</a>.</span>',
-  "<br>",
-];
+welcomeMsg = (function () {
+  var msgs = [
+    '<span class="color2 terminal-welcome-msg">Welcome to my personal terminal-like website!</span>',
+    "<span class=\"color2 terminal-welcome-msg\">Type </span> <span class=\"command terminal-welcome-msg\">'help'</span><span class=\"color2 terminal-welcome-msg\"> to see a list of available commands!</span>",
+  ];
+
+  var fullName = (TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Taey";
+  if (fullName === "Taey") {
+    msgs.push(
+      '<span class="terminal-welcome-msg">Want to build your own terminal-style portfolio? Visit the <a class="command terminal-welcome-msg terminal-generator-link" href="./generator/" target="_blank">config generator</a>.</span>'
+    );
+  }
+
+  msgs.push(
+    '<span class="terminal-welcome-msg" style="font-size: 0.8em;">This terminal template was made by <a class="command" href="https://github.com/PythonToGo" target="_blank">PythonToGo</a>.</span>'
+  );
+
+  msgs.push("<br>");
+  return msgs;
+})();
 
 allCommands = [
-  "help", "about", "links", "projects", "email", "linkedin", "github", "history", "clear", "banner", "theme",
+  "help", "about", "links", "projects", "email", "linkedin", "github", "history", "home", "clear", "banner", "theme",
   "echo", "ping", "ls", "cd",
   "explain", "run", "edit",
   "vi", "vim", "nvim", "emacs",

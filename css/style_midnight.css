@@ -200,3 +200,11 @@ html {
     opacity: 0.8;
     pointer-events: none;
   }
+
+  /* Generator link highlight */
+  .terminal-generator-link {
+    position: relative;
+    color: #F34213;
+    text-shadow: 0 0 6px #F34213;
+    animation: blinker 1s linear infinite;
+  }
