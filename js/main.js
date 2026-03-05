@@ -285,10 +285,10 @@ function commander(cmd) {
       addLine("<span class=\"inherit\">really nvim? Wanna try <span class=\"command\">'vim'</span> instead?</span>", "color2", 80);
       break;
     case "sudo":
-      addLine(`<span class=\"inherit\">Permission denied: unable to run '${args}' as root.</span>`, "color2", 80);
+      addLine(`<span class=\"inherit\">Permission denied: unable to run <span class=\"command\">'sudo'</span> as root.</span>`, "color2", 80);
       setTimeout(function() {
-        window.open('https://www.youtube.com/@zum.hier.trinken/shorts');
-      }, 1); 
+        window.open('https://www.youtube.com/shorts/dp8uRUkf92c');
+      }, 1000); 
       break;
     case "":
       addLine("", "color2", 0);
