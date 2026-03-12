@@ -202,6 +202,42 @@ html {
     pointer-events: none;
   }
 
+  /* Header link button (GitHub, etc.) - matches generator style */
+  .header-links-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .header-link-code {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #e7d0ff;
+    background: #241634;
+    border: 1px solid rgba(201, 146, 246, 0.6);
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+  }
+  .header-link-code:hover {
+    background: #2b183f;
+    border-color: #c992f6;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.85);
+    transform: translateY(-1px);
+  }
+  .header-link-prefix {
+    color: #8ae9c1;
+  }
+  .header-link-command {
+    color: #e5e7eb;
+  }
+  .header-link-label {
+    color: #93c5fd;
+  }
+
   /* Generator link highlight */
   .terminal-generator-link {
     position: relative;

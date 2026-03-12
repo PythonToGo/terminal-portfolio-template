@@ -285,10 +285,12 @@ function commander(cmd) {
       addLine("<span class=\"inherit\">really nvim? Wanna try <span class=\"command\">'vim'</span> instead?</span>", "color2", 80);
       break;
     case "sudo":
-      addLine(`<span class=\"inherit\">Permission denied: unable to run <span class=\"command\">'sudo'</span> as root.</span>`, "color2", 80);
+      var sudoCmd = args ? "sudo " + args : "sudo";
+      var ownerName = (typeof TERMINAL_CONFIG !== "undefined" && TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Taey";
+      addLine(`<span class=\"inherit\">Permission denied: <span class=\"command\">${ownerName}</span> denied permission to run <span class=\"command\">'${sudoCmd}'</span>.</span>`, "color2", 80);
       setTimeout(function() {
         window.open('https://www.youtube.com/shorts/dp8uRUkf92c');
-      }, 1000); 
+      }, 1000);
       break;
     case "":
       addLine("", "color2", 0);

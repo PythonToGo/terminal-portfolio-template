@@ -127,10 +127,13 @@ welcomeMsg = (function () {
     msgs.push(
       '<span class="terminal-welcome-msg">Want to build your own terminal-style portfolio? Visit the <a class="command terminal-welcome-msg terminal-generator-link" href="./generator/" target="_blank">config generator</a>.</span>'
     );
+    msgs.push(
+      '<span class="header-links-wrap"><a href="https://github.com/PythonToGo/terminal-portfolio-template" target="_blank" rel="noopener noreferrer" class="header-link-code terminal-welcome-msg"><span class="header-link-prefix">$</span><span class="header-link-command">open</span><span class="header-link-label">GitHub</span></a><a href="./generator/" target="_blank" rel="noopener noreferrer" class="header-link-code terminal-welcome-msg"><span class="header-link-prefix">$</span><span class="header-link-command">open</span><span class="header-link-label">Generator</span></a></span>'
+    );
   }
 
   msgs.push(
-    '<span class="terminal-welcome-msg" style="font-size: 0.8em;">This terminal template was made by <a class="command" href="https://github.com/PythonToGo" target="_blank">PythonToGo</a>.</span>'
+    '<span class="terminal-welcome-msg" style="font-size: 0.6em;">This terminal template was made by <a class="command" href="https://github.com/PythonToGo" target="_blank">PythonToGo</a>.</span>'
   );
 
   msgs.push("<br>");
