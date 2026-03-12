@@ -53,6 +53,8 @@ Nach dem Öffnen kannst du es auf eine der folgenden Arten anpassen:
 * **Option A (Manuell):** Bearbeite die Datei `js/commands.js` direkt.
 * **Option B (Empfohlen):** Nutze den **[Config Generator](https://pythontogo.github.io/terminal-portfolio-template/generator/)**, um einfach deine `terminal-config.js` zu erstellen.
 
+> **Hinweis:** Für die reine Portfolio-Nutzung sind keine Build-Tools oder `npm` erforderlich. `npm` wird nur beim Ändern des Template-Codes oder bei Beiträgen benötigt.
+
 ---
 
 ## 🛠 Projektstruktur
@@ -192,6 +194,16 @@ Um sicherzustellen, dass alles korrekt funktioniert, werden die Skripte in diese
 
 * Es werden keine Build-Tools benötigt (kein Webpack, Vite, Node.js erforderlich).
 * Öffne einfach `index.html` in deinem Browser oder stelle den Ordner über einen einfachen lokalen Webserver bereit (z. B. `python -m http.server`).
+
+### CI/CD & Qualitätsprüfung
+
+Wenn du das Template forkst oder änderst, läuft die CI automatisch:
+
+* **Tests** (`npm test`): Unit-Tests (z. B. `completeQuery`, Generator-Ausgabevalidierung).
+* **Lint** (`npm run lint`): ESLint für Code-Qualität.
+* **Audit** (`npm audit`): Abhängigkeits-Sicherheitsprüfung.
+
+Lokal ausführen: `npm install` → `npm test` → `npm run lint`
 
 ---
 

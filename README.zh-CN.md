@@ -54,6 +54,8 @@ open index.html
 * **选项 A (手动)：** 直接编辑 `js/commands.js` 文件。
 * **选项 B (推荐)：** 使用 **[配置生成器 (Config Generator)](https://pythontogo.github.io/terminal-portfolio-template/generator/)** 轻松创建你的 `terminal-config.js` 文件。
 
+> **注意：** 仅用于作品集时，不需要任何构建工具或 `npm`。只有在修改模板代码或参与贡献时才需要 `npm`。
+
 ---
 
 ## 🛠 项目结构 (Project Structure)
@@ -193,6 +195,16 @@ open index.html
 
 * 完全不需要构建工具（不需要 Webpack、Vite 或 Node.js）。
 * 只需在浏览器中直接打开 `index.html`，或使用任何基本的本地 Web 服务器（例如 `python -m http.server`）即可。
+
+### CI/CD 与质量检查
+
+当你 fork 或修改模板代码时，CI 会自动运行：
+
+* **测试** (`npm test`)：单元测试（如 `completeQuery`、生成器输出验证）。
+* **Lint** (`npm run lint`)：ESLint 代码质量检查。
+* **审计** (`npm audit`)：依赖项安全检查。
+
+本地运行：`npm install` → `npm test` → `npm run lint`
 
 ---
 

@@ -1,0 +1,20 @@
+{
+  "name": "terminal-portfolio-template",
+  "version": "1.0.0",
+  "description": "Terminal-style personal homepage template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint js/ generator/ --ext .js",
+    "lint:fix": "eslint js/ generator/ --ext .js --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0",
+    "jsdom": "^25.0.0",
+    "vitest": "^2.1.0"
+  }
+}

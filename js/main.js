@@ -365,13 +365,6 @@ function setThemeCSS(theme) {
   }
 }
 
-function completeQuery(arr, query) {
-  // Completes the query string with a list of matching elements from arr
-  return arr.filter(function(item) {
-    return item.startsWith(query);
-  });
-}
-
 function refreshTabCompleteLine(text, style, time) {
   // Refreshes the line below the command for tab completion suggestions
   removeTabCompleteLine();

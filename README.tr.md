@@ -53,6 +53,8 @@ Açıldıktan sonra, aşağıdaki yöntemlerden birini kullanarak özelleştireb
 * **A Seçeneği (Manuel):** Doğrudan `js/commands.js` dosyasını düzenleyin.
 * **B Seçeneği (Önerilen):** `terminal-config.js` dosyanızı kolayca oluşturmak için **[Yapılandırma Oluşturucuyu (Config Generator)](https://pythontogo.github.io/terminal-portfolio-template/generator/)** kullanın.
 
+> **Not:** Yalnızca portföy kullanımı için derleme araçları veya `npm` gerekmez. `npm` yalnızca şablon kodunu değiştirirken veya katkıda bulunurken gereklidir.
+
 ---
 
 ## 🛠 Proje Yapısı (Project Structure)
@@ -192,6 +194,16 @@ Her şeyin doğru çalışmasını sağlamak için, komut dosyaları (script) ş
 
 * Hiçbir derleme aracına (Webpack, Vite, Node.js) ihtiyaç yoktur.
 * Tarayıcınızda doğrudan `index.html` dosyasını açın veya herhangi bir basit yerel web sunucusunu (örn. `python -m http.server`) kullanarak klasörü sunun.
+
+### CI/CD ve Kalite Kontrolü
+
+Şablonu fork ettiğinizde veya değiştirdiğinizde CI otomatik olarak çalışır:
+
+* **Testler** (`npm test`): Birim testleri (örn. `completeQuery`, oluşturucu çıktı doğrulaması).
+* **Lint** (`npm run lint`): Kod kalitesi için ESLint.
+* **Denetim** (`npm audit`): Bağımlılık güvenlik kontrolü.
+
+Yerel çalıştırma: `npm install` → `npm test` → `npm run lint`
 
 ---
 

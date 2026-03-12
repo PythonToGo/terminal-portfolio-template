@@ -53,6 +53,8 @@ open index.html
 * **옵션 A (수동):** `js/commands.js` 파일을 열어 직접 값을 수정합니다.
 * **옵션 B (추천):** **[설정 생성기(Config Generator)](https://pythontogo.github.io/terminal-portfolio-template/generator/)**에 접속하여 쉽게 `terminal-config.js` 파일을 생성합니다.
 
+> **참고:** 포트폴리오만 사용할 경우 빌드 도구나 `npm`이 필요하지 않습니다. `npm`은 템플릿 코드를 수정하거나 기여할 때만 필요합니다.
+
 ---
 
 ## 🛠 프로젝트 구조 (Project Structure)
@@ -192,6 +194,16 @@ open index.html
 
 * Webpack, Vite, Node.js와 같은 빌드 도구가 전혀 필요하지 않습니다.
 * 브라우저에서 `index.html`을 직접 열거나, 간단한 로컬 웹 서버(예: `python -m http.server`)를 사용해 폴더를 서빙하면 됩니다.
+
+### CI/CD 및 품질 검사
+
+템플릿을 fork하거나 수정할 때 CI가 자동으로 실행됩니다:
+
+* **테스트** (`npm test`): 단위 테스트 (예: `completeQuery`, Generator 출력 검증).
+* **린트** (`npm run lint`): ESLint로 코드 품질 검사.
+* **보안 검사** (`npm audit`): 의존성 보안 점검.
+
+로컬 실행: `npm install` → `npm test` → `npm run lint`
 
 ---
 
