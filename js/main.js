@@ -289,7 +289,6 @@ function commander(cmd) {
       var ownerName = (typeof TERMINAL_CONFIG !== "undefined" && TERMINAL_CONFIG.profile && TERMINAL_CONFIG.profile.name) || "Taey";
       addLine(`<span class=\"inherit\">Permission denied: <span class=\"command\">${ownerName}</span> denied permission to run <span class=\"command\">'${sudoCmd}'</span>.</span>`, "color2", 80);
       setTimeout(function() {
-        window.open('https://www.youtube.com/shorts/dp8uRUkf92c');
       }, 1000);
       break;
     case "":
