@@ -19,4 +19,4 @@ assignees: ''
 <!-- Any alternative solutions or features you've considered -->
 
 ## Additional Context
-<!-- Add any other context, mockups, or examples about the feature request -->
+<!-- Add any other mockup or examples about the feature request -->

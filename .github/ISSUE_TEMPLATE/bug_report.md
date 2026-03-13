@@ -7,9 +7,10 @@ assignees: ''
 ---
 
 ## Bug Description
-<!-- A clear and concise description of what the bug is -->
+<!-- A clear description of what the bug is -->
 
 ## Steps to Reproduce
+<!-- if needed, -->
 1. Go to '...'
 2. Click on '...'
 3. Run command '...'
